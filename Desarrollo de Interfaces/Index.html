@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseño Interfaces</title>
+  </head>
+  <body>
+    <div id="div-Articulos">
+      <form action="" onsubmit="a()" method="post">
+        <label>Nombre producto</label>
+        <input type="text" placeholder="introduce un articulo"/>
+        <br></br>
+        <span>Precio producto</span>
+        <input type="text" placeholder="introduce un articulo"/>
+        <br></br>
+        <span>Unidades: </span>
+        <input type="number"/>
+        <br></br>
+        <button type="submit">Añadir carrito</button>
+      </form>
+    </div>
+    <br></br>
+    <div id="div-Carrito">
+        <label>Articulos en el carrito</label>
+        <input type="text"/>
+        <br></br>
+        <span>Precio del carrito</span>
+        <input type="text"/>
+    </div>
+    <br></br>
+    <div id="Compra">
+        <label>Forma de pago: </label>
+        <select id="pago" form="FormaPago">
+            <option value="tarjeta">Tarjeta</option>
+            <option value="efectivo">Efectivo</option>
+        </select>
+        <br></br>
+        <br></br>
+        <br></br>
+        <input type="checkbox" value="Acepta">
+        <label>Acepto las condiciones de compra</label>
+        <br></br>
+        <button type="submit">Imprimir</button>
+        <button type="submit">Restablecer</button>
+    </div>
+  </body>
+</html>
