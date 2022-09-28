@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./JS/formulario.js"></script>
+    <link rel="stylesheet" type="text/css" href="./CSS/formulario.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/reset.css">
+</head>
+<body>
+
+    <header class="header">
+       
+    </header>
+
+    <form action="/" method="get" class="form">
+        
+        <div class="main">
+    
+            <div class="nombre">
+                <label for="nombre">Nombre articulo: </label>
+                <input type="text" id="nombre">
+            </div>
+    
+            <div class="precio">
+                <label for="precio">Precio articulo:</label>
+                <input type="text" id="precio" >
+            </div>
+            <div class="unidades">
+                <label for="unidades">Unidades:</label>
+                <input type="number" id="unidades">
+            </div>
+            <div class="submit">
+                <button type="submit" id= "botonArticulos" name="submit" onsubmit = "return(validate())">Añadir al carrito</button>
+            </div>
+    
+            <div class="articulos">
+                <label for="articulos">Articulos en el carrito:</label>
+                <input type="text" id="articulos">
+            </div>
+    
+            <div class="precio">
+                <label for="precio">Precio total del carrito: </label>
+                <input type="text" id="precio">
+            </div>
+            <div class="pago">
+                <label for="pago">Formas de pago:</label>
+                <select for="pago">
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="efectivo">Efectivo</option>
+    
+                </select>
+            </div>
+
+            <div class="acepto">
+                <label for="acepto">Acepto las condiciones de compra</label>
+                <input type="checkbox" id="acepto">
+            </div>
+            <div class="imprimir">
+                <button type="button" name="imprimir">Imprimir</button>
+            </div>
+            <div class="restablecer">
+                <button type="button" name="restablecer">Restablecer</button>
+            </div>
+    
+    
+        </div>
+        
+    </form>
+    
+    <footer class="footer">
+
+    </footer>
+</body>
+
+
+</html>
