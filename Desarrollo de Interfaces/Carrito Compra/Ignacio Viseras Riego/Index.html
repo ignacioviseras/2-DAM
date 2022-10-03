@@ -4,21 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/programaBase.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>Diseño Interfaces</title>
   </head>
   <body>
     <div id="div-Articulos">
-      <form action="" onsubmit="a()" method="post">
+      <form method="post" action="">
         <label>Nombre producto</label>
-        <input type="text" placeholder="introduce un articulo"/>
+        <input type="text" id="nombreProducto" placeholder="introduce un articulo"/> <span id="mensajeError"></span>
         <br></br>
         <span>Precio producto</span>
-        <input type="text" placeholder="introduce un articulo"/>
+        <input type="text" id="precioArticluo" placeholder="introduce un articulo"/>
         <br></br>
         <span>Unidades: </span>
-        <input type="number"/>
+        <input type="number" id="cantidad"/>
         <br></br>
-        <button type="submit">Añadir carrito</button>
+        <button type="button" id="añadirProductos" >Añadir carrito</button>
       </form>
     </div>
     <br></br>
@@ -42,7 +44,7 @@
         <input type="checkbox" value="Acepta">
         <label>Acepto las condiciones de compra</label>
         <br></br>
-        <button type="submit">Imprimir</button>
+        <button type="submit" name="imprimir" onclick="validarFromulario()">Imprimir</button>
         <button type="submit">Restablecer</button>
     </div>
   </body>
