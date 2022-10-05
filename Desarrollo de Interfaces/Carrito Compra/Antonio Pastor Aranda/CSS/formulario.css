@@ -1,7 +1,7 @@
 .form{
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 4fr 4fr 4fr;
     grid-template-areas:
         "header  header header"
         "  .      main   .     "
@@ -13,22 +13,53 @@
     display: grid;
     justify-content: center;
     align-content: center;   
-    margin-bottom: 10%;
+    margin-bottom: 3%;
 }
 
 .main{
     grid-area: main;
     display: grid;
-    justify-content: center;
     align-content: center;   
+    background-color: rgba(79, 99, 155, 0.525);
+    padding: 5%;
+    border-color: #4f4f4f;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#datosTarjeta{
+    display: none;
 }
 
 .main div {
-    padding: 2%;
+    padding: 3%;
 
 }
 
 .footer{
     grid-area: footer;
+    margin-top: 5%;
+}
+
+.articulos input{
+    width: 50%;
+
+}
+.precioT input{
+    width: 65%;
+}
+
+
+.imprimir{
+    display: grid;
+    justify-content: center;   
+    
+}
+
+.restablecer{
+    display: grid;
+    justify-content: center;
+    padding: 5%;
+    
 }
 
