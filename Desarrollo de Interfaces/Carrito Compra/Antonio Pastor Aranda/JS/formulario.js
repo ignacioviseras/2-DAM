@@ -7,6 +7,7 @@ var articulos={};
 var precioT;
 var resultado;
 var acepto;
+var importe= 0;
 
 
 function guardarArticulos (){
@@ -25,18 +26,28 @@ function guardarArticulos (){
 
     resultado=Object.values(articulos).join();
         document.getElementById("precioT").innerHTML=resultado;  
+
+        
         
 }
-
-
+    function importeTotal(){
+        var importe= importe.sum(precioT);
+        document.getElementById("importeT").innerHTML=resultado;
+    }
+     
  
     let datosTarjeta = document.getElementById("datosTarjeta");
     const mostrar = (datosTarjeta) => {
         datosTarjeta.style.display = 'block';
+        importeT.style.display = 'none';
+
+
     }
     const ocultar = (datosTarjeta) => {
         datosTarjeta.style.display = 'none';
+        importeT.style.display = 'block';
     }
+
 
 function mostrarT(datosTarjeta) { 
     let tarjeta = document.getElementById(datosTarjeta);
@@ -62,7 +73,6 @@ window.onload = function() {
       
     document.getElementById("botonArticulos").addEventListener("click", guardarArticulos);
     document.getElementById("tarjeta").addEventListener("click", mostrarT);
-    document.getElementById("efectivo").addEventListener("click", ocultarT);
     document.getElementById("restablecer").addEventListener("click", limpiarFormulario);
 
     

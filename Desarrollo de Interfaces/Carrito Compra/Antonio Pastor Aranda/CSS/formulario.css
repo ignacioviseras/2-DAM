@@ -31,6 +31,10 @@
     display: none;
 }
 
+#importeT{
+    display: none;
+}
+
 .main div {
     padding: 3%;
 
