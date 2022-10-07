@@ -65,6 +65,13 @@ function guardarArticulos (){
     
 function limpiarFormulario() {
     document.getElementById("form").reset();
+
+    document.getElementById("importe").value = "";
+    document.getElementById("precioT").value = "";
+    document.getElementById("articulos").value = "";
+
+
+
 }
 
 
@@ -97,11 +104,10 @@ window.onload = function() {
     document.getElementById("botonArticulos").addEventListener("click", guardarArticulos);
     document.getElementById("tarjeta").addEventListener("click", mostrarT);
     document.getElementById("efectivo").addEventListener("click", sumatorioEfectivo);
-    document.getElementById("restablecer").addEventListener("click", limpiarFormulario);
     document.getElementById("acepto").addEventListener("click", bloqueoImprimir);
     document.getElementById("acepto").addEventListener("dblclick", desbloqueoImprimir);
     document.getElementById("botonArticulos").addEventListener("click", Validar);
-    
+    document.getElementById("restablecer").addEventListener("click", limpiarFormulario);
 }
 
 
