@@ -6,8 +6,11 @@ var unidades;
 var articulos={};
 var precioT;
 var resultado;
-var acepto;
-var importe= 0;
+var suma={};
+var disabled;
+var enabled;
+var texto="";
+
 
 
 function guardarArticulos (){
@@ -30,11 +33,8 @@ function guardarArticulos (){
         
         
 }
-    function importeTotal(){
-        var importe= importe.sum(precioT);
-        document.getElementById("importeT").innerHTML=resultado;
-    }
-     
+  
+/*------------------------------ Control de aparición de tarjeta o efectivo ----------------------*/
  
     let datosTarjeta = document.getElementById("datosTarjeta");
     const mostrar = (datosTarjeta) => {
@@ -49,32 +49,59 @@ function guardarArticulos (){
     }
 
 
-function mostrarT(datosTarjeta) { 
-    let tarjeta = document.getElementById(datosTarjeta);
-    window.getComputedStyle(tarjeta).display !== 'none';
-        mostrar(tarjeta);
-}
+    function mostrarT(datosTarjeta) { 
+        let tarjeta = document.getElementById(datosTarjeta);
+        window.getComputedStyle(tarjeta).display !== 'none';
+            mostrar(tarjeta);
+    }
 
-function ocultarT(datosTarjeta) { 
-    let tarjeta = document.getElementById(datosTarjeta);
-    window.getComputedStyle(tarjeta).display == 'block'; 
-        ocultar(tarjeta);
-}
+    function ocultarT(datosTarjeta) { 
+        let tarjeta = document.getElementById(datosTarjeta);
+        window.getComputedStyle(tarjeta).display == 'block'; 
+            ocultar(tarjeta);
+    }
 
+/*-------------------------------Reseteo de formulario---------------------------------*/
     
 function limpiarFormulario() {
     document.getElementById("form").reset();
 }
 
 
+/*-------------------------------Sumatorio de efectivo---------------------------------*/
+    
+function sumatorioEfectivo() {
+
+    suma = (precio*unidades);
+    document.getElementById("importe").innerHTML=suma;
+     
+}
+
+
+/*-------------------------------Bloqueo imprimir---------------------------------*/
+    
+function bloqueoImprimir() {
+   
+    document.getElementById("imprimir").disabled=false;
+}
+
+function desbloqueoImprimir(){
+            
+    document.getElementById("imprimir").disabled=true;
+}
+
+/*--------------------------------Carga de ventana---------------------------------*/
 
 window.onload = function() {
 
       
     document.getElementById("botonArticulos").addEventListener("click", guardarArticulos);
     document.getElementById("tarjeta").addEventListener("click", mostrarT);
+    document.getElementById("efectivo").addEventListener("click", sumatorioEfectivo);
     document.getElementById("restablecer").addEventListener("click", limpiarFormulario);
-
+    document.getElementById("acepto").addEventListener("click", bloqueoImprimir);
+    document.getElementById("acepto").addEventListener("dblclick", desbloqueoImprimir);
+    document.getElementById("botonArticulos").addEventListener("click", Validar);
     
 }
 
@@ -82,5 +109,19 @@ window.onload = function() {
 
 
 
-/*------------------Validación JS-------------------- */
+/*-----------------------------------Validación JS-------------------- */
 
+function Validar(){
+
+    //validamos el nombre solo con letras y que admita compuestos
+
+    if (nombre.trim().match(/^[a-zA-Z]+ [a-zA-Z]+$/)==null) {
+        alert('[ERROR]--Introduce el nombre correctamente.')
+        return false;
+    }
+
+   
+   
+    
+    
+}

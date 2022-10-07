@@ -20,7 +20,7 @@
     
             <div class="nombre">
                 <label for="nombre">Nombre articulo: </label>
-                <input type="text" id="nombre"name="nombre">
+                <input type="text" id="nombre"name="nombre"> <span id="mensajeNombre"></span>
             </div>
     
             <div class="precio">
@@ -48,7 +48,7 @@
                 <label for="pago">Formas de pago:</label>
                 <select for="pago">
                     <option value="tarjeta" id="tarjeta"  onclick="mostrarT('datosTarjeta')">Tarjeta</option>
-                    <option value="efectivo" id="efectivo" onclick="ocultarT('datosTarjeta')">Efectivo</option>
+                    <option value="efectivo" id="efectivo" onclick="ocultarT('datosTarjeta')" >Efectivo</option>
                 </select>
             </div>
              
@@ -57,7 +57,7 @@
                 <input type="text" placeholder="Nombre de titular">
                 <input type="text" placeholder="MM/YY">
                 <input type="text" placeholder="CVC">
-                <button type="submit">Pagar</button>
+                <button type="button">Pagar</button>
             </div>
 
             
@@ -71,10 +71,10 @@
                 <input type="checkbox" id="acepto">
             </div>
             <div class="imprimir">
-                <button type="submit" name="imprimir">Imprimir</button>
+                <button type="button" name="imprimir"  id="imprimir" disabled>Imprimir</button>
             </div>
             <div class="restablecer">
-                <button type="submit" id="restablecer" name="restablecer" onclick="limpiarFormulario()" value="LimpiarFormulario">Restablecer</button>
+                <button type="button" id="restablecer" name="restablecer" onclick="limpiarFormulario()" value="LimpiarFormulario">Restablecer</button>
             </div>
     
     
