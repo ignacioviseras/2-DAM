@@ -71,8 +71,7 @@ function limpiarFormulario() {
 /*-------------------------------Sumatorio de efectivo---------------------------------*/
     
 function sumatorioEfectivo() {
-
-    suma = (precio*unidades);
+    suma= Object.values(articulos).reduce((a, b) => a + b, 0);
     document.getElementById("importe").innerHTML=suma;
      
 }
@@ -115,7 +114,7 @@ function Validar(){
 
     //validamos el nombre solo con letras y que admita compuestos
 
-    if (nombre.trim().match(/^[a-zA-Z]+ [a-zA-Z]+$/)==null) {
+    if (nombre.trim().match(/^[a-zA-Z]+$/)==null) {
         alert('[ERROR]--Introduce el nombre correctamente.')
         return false;
     }
