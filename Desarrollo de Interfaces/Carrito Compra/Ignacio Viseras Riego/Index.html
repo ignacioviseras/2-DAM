@@ -25,47 +25,52 @@
     </div>
     <br></br>
     <div id="div-Carrito">
-        <label>Articulos en el carrito</label>
-        <input type="text" id="listaCarri"/>
-        <br></br>
-        <span>Precio del carrito</span>
-        <input type="text" id="precioCarri"/>
+      <label>Articulos en el carrito</label>
+      <input type="text" id="listaCarri"/>
+      <br></br>
+      <span>Precio del carrito</span>
+      <input type="text" id="precioCarri"/>
     </div>
     <br></br>
-    <div id="Compra">
-        <label>Forma de pago: </label>
-        <select id="pago" form="FormaPago">
-            <option value="tarjeta">Tarjeta</option>
-            <option value="efectivo">Efectivo</option>
-          </select>
-            <br></br>
-            <span id="formularioTarjeta">
-              <form >
-                <label>Titular Tarjeta</label>
-                <input type="text" id="titularTarjeta"/> <span id="titularTarjetaError"></span>
-                <br></br>
-                <label>Número Tarjeta</label>
-                <input type="text" id="numeroTarjeta"/> <span id="numeroTarjetaError"></span>
-                <br></br>
-                <label>CVV</label>
-                <input type="text" id="CVV"/> <span id="cvvError"></span>
-                <br></br>
-              </form>
-            </span>
-            <span id="formularioEfectivo">
-              <form>
-                <label>Importe Efectivo</label>
-                <input type="text" id="importeEfectivo"/> <span id="importeEfectivoError"></span>
-                <br></br>
-              </form>
-            </span>
+    <label>Forma de pago: </label>
+    <select id="pago">
+        <option value="tarjeta" id="tarjeta" onclick="mostrar('datosTarjeta')">Tarjeta</option>
+        <option value="efectivo" id="efectivo" onclick="ocultar('datosTarjeta')">Efectivo</option>
+    </select>
+    <br></br>
+    <div id="datosTarjeta">
+      <input type="text" placeholder="numeroTarjeta" id="numeroTarjeta">
+      <input type="text" placeholder="nombreTitular" id="nombreTitular">
+      <input type="text" placeholder="MM/YY" id="caducidad">
+      <input type="text" placeholder="CVC" id="cvc">
+      <button type="button">Pagar</button>
+    </div>
+    <div class="importe" id="importeT">
+        <label for="importe">Importe a pagar en efectivo: </label>
+        <output id="importe" name="importe">
+    </div>
+    <!-- <div id="opcionTarjeta">
+        <label>Titular Tarjeta</label>
+        <input type="text" id="titularTarjeta"/>titularTarjeta<span id="titularTarjetaError"></span>
         <br></br>
+        <label>Número Tarjeta</label>
+        <input type="text" id="numeroTarjeta"/>numeroTarjeta<span id="numeroTarjetaError"></span>
         <br></br>
-        <input type="checkbox" value="Acepta">
-        <label>Acepto las condiciones de compra</label>
+        <label>CVV</label>
+        <input type="text" id="CVV"/>CVV<span id="cvvError"></span>
         <br></br>
-        <button type="submit" name="imprimir" >Imprimir</button>
-        <button type="submit">Restablecer</button>
+    </div>
+    <div id="opcionEfectivo">
+        <label>Importe Efectivo</label>
+        <input type="text" id="importeEfectivo"/>Precio efectivo<span id="importeEfectivoError"></span>
+        <br></br>
+    </div> -->
+    <br></br>
+    <input type="checkbox" value="Acepta">
+    <label>Acepto las condiciones de compra</label>
+    <br></br>
+    <button type="submit" name="imprimir" >Imprimir</button>
+    <button type="submit">Restablecer</button>
     </div>
   </body>
 </html>
