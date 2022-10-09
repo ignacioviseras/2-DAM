@@ -10,6 +10,11 @@ var suma={};
 var disabled;
 var enabled;
 var texto="";
+var Tarjeta={};
+var numeroTarjeta;
+var nombreTitular;
+var caducidad;
+var cvc;
 
 
 
@@ -40,8 +45,6 @@ function guardarArticulos (){
     const mostrar = (datosTarjeta) => {
         datosTarjeta.style.display = 'block';
         importeT.style.display = 'none';
-
-
     }
     const ocultar = (datosTarjeta) => {
         datosTarjeta.style.display = 'none';
@@ -65,7 +68,6 @@ function guardarArticulos (){
     
 function limpiarFormulario() {
     document.getElementById("form").reset();
-
     document.getElementById("importe").value = "";
     document.getElementById("precioT").value = "";
     document.getElementById("articulos").value = "";
@@ -88,13 +90,24 @@ function sumatorioEfectivo() {
     
 function bloqueoImprimir() {
    
-    document.getElementById("imprimir").disabled=false;
+    document.getElementById("imprimir").enabled=true;
 }
 
 function desbloqueoImprimir(){
             
     document.getElementById("imprimir").disabled=true;
 }
+
+function controlImprimir(){
+
+    if(document.getElementById("acepto").checked==true){
+        document.getElementById("imprimir").disabled=false;
+
+    } else{
+        document.getElementById("imprimir").disabled=true;
+
+    }
+} 
 
 /*--------------------------------Carga de ventana---------------------------------*/
 
@@ -104,8 +117,7 @@ window.onload = function() {
     document.getElementById("botonArticulos").addEventListener("click", guardarArticulos);
     document.getElementById("tarjeta").addEventListener("click", mostrarT);
     document.getElementById("efectivo").addEventListener("click", sumatorioEfectivo);
-    document.getElementById("acepto").addEventListener("click", bloqueoImprimir);
-    document.getElementById("acepto").addEventListener("dblclick", desbloqueoImprimir);
+    document.getElementById("acepto").addEventListener("click", controlImprimir);
     document.getElementById("botonArticulos").addEventListener("click", Validar);
     document.getElementById("restablecer").addEventListener("click", limpiarFormulario);
 }
