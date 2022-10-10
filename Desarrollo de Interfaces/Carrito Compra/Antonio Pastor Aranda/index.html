@@ -44,11 +44,12 @@
                 <label for="precioT">Precio total del carrito: </label>
                 <output id="precioT" name="precioT">
             </div>
+            
             <div class="pago">
                 <label for="pago">Formas de pago:</label>
-                <select for="pago">
-                    <option value="tarjeta" id="tarjeta"  onclick="mostrarT('datosTarjeta')">Tarjeta</option>
-                    <option value="efectivo" id="efectivo" onclick="ocultarT('datosTarjeta')" >Efectivo</option>
+                <select for="pago" name="pago" onchange="ocultarTarjeta()">
+                    <option value="Tarjeta" id="tarjeta">Tarjeta</option>
+                    <option value="Efectivo" id="efectivo">Efectivo</option>
                 </select>
             </div>
              
