@@ -47,24 +47,10 @@ function guardar() {
   document.getElementById("precioCarri").value = total;
 }
 
-
-function inicializarVariables() {
-  nombreProducto = document.getElementById("nombreProducto");
-  precioArticluo = document.getElementById("precioArticluo");
-  cantidad = document.getElementById("cantidad");
-  menError = document.getElementById("mensajeError");
-  menErrorPrecio = document.getElementById("mensajeErrorPrecio");
-  botonArticulo = document.getElementById("añadirProductos");
-}
-
-function inicializarEventos() {
-  document.getElementById("añadirProductos").addEventListener("click", anadir);
-}
 function valorSuma(){
-    document.getElementById("importe").value = listado;
+    document.getElementById("importe").value = total;
 }
 
-/*antonio*/
 let datosTarjeta = document.getElementById("datosTarjeta");
 const mostrar = (datosTarjeta) => {
     datosTarjeta.style.display = 'block';
@@ -86,28 +72,16 @@ function ocultarT(datosTarjeta) {
     window.getComputedStyle(tarjeta).display == 'block'; 
     ocultar(tarjeta);
 }
-/* let opcion = document.getElementById("opcionTarjeta");
-const mostrarC = (opcion) => {
-    opcionTarjeta.style.display = 'block';
-    opcionEfectivo.style.display = 'none';
+
+function resetForm(){
+  document.getElementById("div-Articulos").reset();
 }
 
-const ocultarC = (opcion) => {
-    opcionEfectivo.style.display = 'block';
-    opcionTarjeta.style.display = 'none';
-}
+/* validacion tarjeta */
 
-function mostrar(opcion){
-    let marcado = document.getElementById(opcionTarjeta);
-    window.getComputedStyle(marcado).display !== 'none';
-        mostrarC(marcado);
-}
+/* checkbox */
 
-function ocultar(opcion){
-    let marcado = document.getElementById(opcionTarjeta);
-    window.getComputedStyle(marcado).display == 'block';
-        ocultarC(marcado);
-}  */
+/* imprimir */
 
 function inicializarVariables(){
     nombreProducto = document.getElementById("nombreProducto");
@@ -123,6 +97,7 @@ function inicializarEventos(){
     document.getElementById("añadirProductos").addEventListener("click", anadir);
     document.getElementById("tarjeta").addEventListener("click", mostrarT);
     document.getElementById("efectivo").addEventListener("click", valorSuma);
+    document.getElementById("reset").addEventListener("click", resetForm);
 }
 
 window.onload = function (){

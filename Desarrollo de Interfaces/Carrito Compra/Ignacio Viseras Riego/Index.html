@@ -21,56 +21,41 @@
         <input type="number" id="cantidad"/>
         <br></br>
         <button type="button" id="añadirProductos" >Añadir carrito</button>
-      </form>
     </div>
-    <br></br>
-    <div id="div-Carrito">
-      <label>Articulos en el carrito</label>
-      <input type="text" id="listaCarri"/>
       <br></br>
-      <span>Precio del carrito</span>
-      <input type="text" id="precioCarri"/>
-    </div>
-    <br></br>
-    <label>Forma de pago: </label>
-    <select id="pago">
-        <option value="tarjeta" id="tarjeta" onclick="mostrarT('datosTarjeta')">Tarjeta</option>
-        <option value="efectivo" id="efectivo" onclick="ocultarT('datosTarjeta')">Efectivo</option>
-    </select>
-    <br></br>
-    <div id="datosTarjeta">
-      <input type="text" placeholder="numeroTarjeta" id="numeroTarjeta">
-      <input type="text" placeholder="nombreTitular" id="nombreTitular">
-      <input type="text" placeholder="MM/YY" id="caducidad">
-      <input type="text" placeholder="CVC" id="cvc">
-      <button type="button">Pagar</button>
-    </div>
-    <div class="importe" id="importeT">
-        <label for="importe">Importe a pagar en efectivo: </label>
-        <output id="importe" name="importe">
-    </div>
-    <!-- <div id="opcionTarjeta">
-        <label>Titular Tarjeta</label>
-        <input type="text" id="titularTarjeta"/>titularTarjeta<span id="titularTarjetaError"></span>
+      <div id="div-Carrito">
+        <label>Articulos en el carrito</label>
+        <input type="text" id="listaCarri"/>
         <br></br>
-        <label>Número Tarjeta</label>
-        <input type="text" id="numeroTarjeta"/>numeroTarjeta<span id="numeroTarjetaError"></span>
-        <br></br>
-        <label>CVV</label>
-        <input type="text" id="CVV"/>CVV<span id="cvvError"></span>
-        <br></br>
-    </div>
-    <div id="opcionEfectivo">
-        <label>Importe Efectivo</label>
-        <input type="text" id="importeEfectivo"/>Precio efectivo<span id="importeEfectivoError"></span>
-        <br></br>
-    </div> -->
-    <br></br>
-    <input type="checkbox" value="Acepta">
-    <label>Acepto las condiciones de compra</label>
-    <br></br>
-    <button type="submit" name="imprimir" >Imprimir</button>
-    <button type="submit">Restablecer</button>
+        <span>Precio del carrito</span>
+        <input type="text" id="precioCarri"/>
+      </div>
+      <br></br>
+      <label>Forma de pago: </label>
+      <select id="pago">
+          <option value="tarjeta" id="tarjeta" onclick="mostrarT('datosTarjeta')">Tarjeta</option>
+          <option value="efectivo" id="efectivo" onclick="ocultarT('datosTarjeta')">Efectivo</option>
+      </select>
+      <br></br>
+      <div id="datosTarjeta">
+        <input type="text" placeholder="numeroTarjeta" id="numeroTarjeta">
+        <input type="text" placeholder="nombreTitular" id="nombreTitular">
+        <input type="text" placeholder="MM/YY" id="caducidad">
+        <input type="text" placeholder="CVC" id="cvc">
+        <button type="button">Pagar</button>
+      </div>
+      <div class="importe" id="importeT">
+          <label for="importe">Importe a pagar en efectivo: </label>
+          <input type="text" id="importe"/>
+          <!-- <output id="importe" name="importe"> -->
+      </div>
+      <br></br>
+      <input type="checkbox" value="Acepta">
+      <label>Acepto las condiciones de compra</label>
+      <br></br>
+      <button type="submit" name="imprimir" >Imprimir</button>
+      <button type="submit" id="reset" onclick="resetForm()">Restablecer</button>
+      </form>
     </div>
   </body>
 </html>
