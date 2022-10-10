@@ -32,7 +32,7 @@ function guardarArticulos (){
         articulos[nombre]+= precioT;
     }
 
-    resultado=Object.values(articulos).join();
+    resultado=Object.values(articulos).reduce((a, b) => a + b, 0);
         document.getElementById("precioT").innerHTML=resultado;  
 
         
@@ -51,21 +51,21 @@ function guardarArticulos (){
         importeT.style.display = 'block';
     }
 
-
-    function mostrarT(datosTarjeta) { 
-        let tarjeta = document.getElementById(datosTarjeta);
-        window.getComputedStyle(tarjeta).display !== 'none';
-            mostrar(tarjeta);
-    }
-
-    function ocultarT(datosTarjeta) { 
-        let tarjeta = document.getElementById(datosTarjeta);
-        window.getComputedStyle(tarjeta).display == 'block'; 
-            ocultar(tarjeta);
-    }
-
 /*-------------------------------Reseteo de formulario---------------------------------*/
     
+function ocultarTarjeta() {
+    const tipoPago = document.getElementsByName("pago")[0].value
+    let datosTarjeta = document.getElementById("datosTarjeta");
+    
+    if (tipoPago === 'Tarjeta') {
+        datosTarjeta.style.display = 'block';
+        importeT.style.display = 'none';
+    } else{
+        datosTarjeta.style.display = 'none';
+        importeT.style.display = 'block';
+    }
+}
+
 function limpiarFormulario() {
     document.getElementById("form").reset();
     document.getElementById("importe").value = "";
@@ -99,9 +99,19 @@ function desbloqueoImprimir(){
 }
 
 function controlImprimir(){
-
+    var nombreArticulos = ''
+    var precioTotal = 0
     if(document.getElementById("acepto").checked==true){
         document.getElementById("imprimir").disabled=false;
+        for (const val of Object.keys(articulos)) {
+            nombreArticulos += val + ', '
+        }
+        for (const val of Object.values(articulos)) {
+            precioTotal += val
+        }
+        nombreArticulos = nombreArticulos.slice(0, -2)
+        console.log(document.getElementsByName("pago")[0].value)
+        alert("Los articulos de mi carro son : " + nombreArticulos + " y el precio total es: "+ precioTotal + " € "+ " Forma de pago: " + document.getElementsByName("pago")[0].value)
 
     } else{
         document.getElementById("imprimir").disabled=true;
@@ -115,7 +125,7 @@ window.onload = function() {
 
       
     document.getElementById("botonArticulos").addEventListener("click", guardarArticulos);
-    document.getElementById("tarjeta").addEventListener("click", mostrarT);
+//    document.getElementById("tarjeta").addEventListener("click", mostrarT);
     document.getElementById("efectivo").addEventListener("click", sumatorioEfectivo);
     document.getElementById("acepto").addEventListener("click", controlImprimir);
     document.getElementById("botonArticulos").addEventListener("click", Validar);
