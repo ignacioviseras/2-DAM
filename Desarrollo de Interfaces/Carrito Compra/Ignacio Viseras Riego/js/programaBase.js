@@ -8,6 +8,7 @@ var menError;
 var menErrorPrecio;
 var botonArticulo;
 
+/**validacion para los campos del formulario */
 function validarFormulario() {
   filtroNombre = /^\D+$/;
   filtroPrecio1 = /^[0-9]/;
@@ -31,57 +32,50 @@ function validarFormulario() {
   return true;
 }
 
-function anadir() {
+/* validacion tarjeta */
+
+/** aqui guardamos los valores del formulario
+ * en caso de que cumpla la validacion*/
+function guardar() {
   if (validarFormulario() != false) {
-    guardar();
+    recibirLista += nombreProducto.value + ", ";
+    listado = recibirLista.substring(0, recibirLista.length - 2);
+    total += precioArticluo.value * cantidad.value;
+    document.getElementById("listaCarri").value = listado;
+    document.getElementById("precioCarri").value = total;
   }
 }
 
-function guardar() {
-  recibirLista += nombreProducto.value + ", ";
-  listado = recibirLista.substring(0, recibirLista.length - 2);
-  total += precioArticluo.value * cantidad.value;
-  console.log(listado);
-  console.log(total);
-  document.getElementById("listaCarri").value = listado;
-  document.getElementById("precioCarri").value = total;
+/** Aparicion campos del select */
+function ocultarTarjeta() {
+  const tipoPago = document.getElementsByName("pago")[0].value;
+  let datosTarjeta = document.getElementById("datosTarjeta");
+
+  if (tipoPago === 'tarjeta') {
+      datosTarjeta.style.display = 'block';
+      importeT.style.display = 'none';
+  } else{
+      datosTarjeta.style.display = 'none';
+      importeT.style.display = 'block';
+      document.getElementById("importe").value = total;
+  }
 }
-
-function valorSuma(){
-    document.getElementById("importe").value = total;
-}
-
-let datosTarjeta = document.getElementById("datosTarjeta");
-const mostrar = (datosTarjeta) => {
-    datosTarjeta.style.display = 'block';
-    importeT.style.display = 'none';
-};
-const ocultar = (datosTarjeta) => {
-    datosTarjeta.style.display = 'none';
-    importeT.style.display = 'block';
-};
-
-function mostrarT(datosTarjeta) { 
-    let tarjeta = document.getElementById(datosTarjeta);
-    window.getComputedStyle(tarjeta).display !== 'none';
-    mostrar(tarjeta);
-}
-
-function ocultarT(datosTarjeta) { 
-    let tarjeta = document.getElementById(datosTarjeta);
-    window.getComputedStyle(tarjeta).display == 'block'; 
-    ocultar(tarjeta);
-}
-
+/** borra todo el formulario tanto campos
+ * para rellenar como de resultado*/
 function resetForm(){
   document.getElementById("div-Articulos").reset();
 }
 
-/* validacion tarjeta */
-
 /* checkbox */
-
 /* imprimir */
+function imprimir(){
+  if (document.getElementById("acepta").checked == true) {
+    document.getElementById("imprimir").disabled = false;
+    alert("asdasd" + listado + "asd asd" + total + "€" + "Forma de pago"+ document.getElementById(""))
+  } else {
+    document.getElementById("imprimir").disabled=true;
+  }
+}
 
 function inicializarVariables(){
     nombreProducto = document.getElementById("nombreProducto");
@@ -94,9 +88,7 @@ function inicializarVariables(){
 }
 
 function inicializarEventos(){
-    document.getElementById("añadirProductos").addEventListener("click", anadir);
-    document.getElementById("tarjeta").addEventListener("click", mostrarT);
-    document.getElementById("efectivo").addEventListener("click", valorSuma);
+    document.getElementById("añadirProductos").addEventListener("click", guardar);
     document.getElementById("reset").addEventListener("click", resetForm);
 }
 
