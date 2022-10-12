@@ -18,7 +18,7 @@
         <input type="text" id="precioArticluo" placeholder="introduce un articulo"/> <span id="mensajeErrorPrecio"></span>
         <br></br>
         <span>Unidades: </span>
-        <input type="number" id="cantidad"/>
+        <input type="number" id="cantidad"/><span id="mensajeErrorCantidad"></span>
         <br></br>
         <button type="button" id="añadirProductos" >Añadir carrito</button>
     </div>
@@ -52,7 +52,7 @@
       <input type="checkbox" id="acepta">
       <label>Acepto las condiciones de compra</label>
       <br></br>
-      <button type="submit" name="imprimir" id="imprimir">Imprimir</button>
+      <button type="submit" name="imprimir" id="imprimir" disabled>Imprimir</button>
       <button type="submit" id="reset" onclick="resetForm()">Restablecer</button>
       </form>
     </div>
