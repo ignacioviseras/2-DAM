@@ -12,9 +12,9 @@
     <div id="carrito">
         <form id= "form" action="/my-handling-form-page" method="post">
 
-            Nombre artículo: <input type="text" id="name" /><br></br>
-            Precio artículo: <input type="text" id="price"/><br></br>
-            Unidades: <input type="number" id="unit" min="1"/><br></br>
+            Nombre artículo: <input type="text" id="nombreArticulo" /><br></br><span id="nombreError"></span>
+            Precio artículo: <input type="text" id="precioArticulo"/><br></br><span id="precioError"></span>
+            Unidades: <input type="number" id="unidades" min="1"/><br></br><span id="unidadError"></span>
             <input type="button" value="Añadir al carrito" id ="boton"/><br></br>
 
             Articulos en el carrito: <input type="text" id="articulos"/><br></br>
@@ -25,12 +25,25 @@
                                 <option value="tarjeta">Tarjeta</option>
                                 <option value="efectivo">Efectivo</option>
                             </select><br></br>
-                            
-            <div>
-            <br><br/>
-            <label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>
+            
+            <div id = "pagoTarjeta">
+                Nombre Titular: <input type="text" id="tarjeta"/><span id="nombretarjetaError"></span> 
+                Numero Tarjeta: <input type="text" id="numeroTarjeta"/><span id="tarjetaError"></span>
+                Fecha Caducidad <input type="text" id="fechaCad"/><span id="fechaError"></span>
+                CV: <input type="text" id="cv"/><span id="cvError"></span>
+            </div>
+            <div id = "pagoEfectivo">
+                Importe Efectivo: <input type="text" id="importeEfectivo"/><span id="efectivoError"></span>
+            </div>
 
-            <input type="button" id="imprimir" value="Imprimir"><br></br>
+            <div class="condiciones">
+                <div class="acepto">
+                    <label for="acepto">Acepto las condiciones de compra</label>
+                    <input type="checkbox" id="acepto">
+            </div>
+
+            <div>
+            <input type="button" id="imprimir" disabled value="Imprimir"><br></br>
             <input type="button" id="restablecer" value="Restablecer"><br></br>
             </div>
             
