@@ -10,7 +10,8 @@ var botonArticulo;
 
 /**validacion para los campos del formulario */
 function validarFormulario() {
-  filtroNombre = /^\D+$/;
+  //filtroNombre = /^\D+$/;
+  filtroNombre = /^[A-Z || a-z]/;
   filtroPrecio1 = /^[0-9]/;
   filtroPrecio2 = /^[0-9]+.[0-9]{2}/;
   if (nombreProducto.value.trim() == "") {
@@ -29,10 +30,15 @@ function validarFormulario() {
     menErrorPrecio.textContent = "introduce bn el numero";
     return false;
   }
+  if (cantidad.value.trim() <= 0) {
+    mensajeErrorCantidad.textContent = "Tiene que se un numero positivo";
+    return false;
+  }
   return true;
 }
 
 /* validacion tarjeta */
+/*recibir datos tarjeta*/
 
 /** aqui guardamos los valores del formulario
  * en caso de que cumpla la validacion*/
@@ -60,18 +66,29 @@ function ocultarTarjeta() {
       document.getElementById("importe").value = total;
   }
 }
+
 /** borra todo el formulario tanto campos
  * para rellenar como de resultado*/
 function resetForm(){
   document.getElementById("div-Articulos").reset();
 }
 
-/* checkbox */
-/* imprimir */
+function terminos(){
+  if (document.getElementById("acepta").checked == false)
+    document.getElementById("imprimir").disabled = true;
+  if (listado != undefined && total != 0) {
+    document.getElementById("imprimir").disabled = false;
+  }else{
+    alert("Tienes que introducir elementos en el carrito y sus precios")
+  }
+
+}
+
+/**aqui se ejecuta el boton imprimir 
+ * q inicialmente tiene q estar ""oculto""" */
 function imprimir(){
   if (document.getElementById("acepta").checked == true) {
-    document.getElementById("imprimir").disabled = false;
-    alert("asdasd" + listado + "asd asd" + total + "€" + "Forma de pago"+ document.getElementById(""))
+    alert("Articulos en el carrito " + listado + ". Precio " + total + "€ " + "Forma de pago: "+ document.getElementsByName("pago")[0].value)
   } else {
     document.getElementById("imprimir").disabled=true;
   }
@@ -83,12 +100,15 @@ function inicializarVariables(){
     cantidad = document.getElementById("cantidad");
     menError = document.getElementById("mensajeError");
     menErrorPrecio = document.getElementById("mensajeErrorPrecio");
+    menErrorPrecio = document.getElementById("mensajeErrorCantidad");
     botonArticulo = document.getElementById("añadirProductos");
 
 }
 
 function inicializarEventos(){
     document.getElementById("añadirProductos").addEventListener("click", guardar);
+    document.getElementById("acepta").addEventListener("click", terminos);
+    document.getElementById("imprimir").addEventListener("click", imprimir);
     document.getElementById("reset").addEventListener("click", resetForm);
 }
 
