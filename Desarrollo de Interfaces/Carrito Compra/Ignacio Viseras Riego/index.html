@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="./js/programaBase.js"></script>
+        <title>index</title>
+    </head>
+    <body>
+        <div class="box">
+            <div class="form">
+                <h2><b>Carrito de la compra</b></h2>
+                <form id="div-Articulos">
+                    <div class="formBox">
+                        <div class="inputBox">
+                            <input type="text" id="nombreProducto"/>
+                            <span>Nombre Articulo</span>
+                            <i></i>
+                        </div>
+                        <span class="errorForm" id="mensajeError"></span>
+                        <div class="inputBox">
+                            <input type="text" id="precioArticluo"/>
+                            <span>Precio Articulo</span>
+                            <i></i>
+                        </div>
+                        <span class="errorForm" id="mensajeErrorPrecio"></span>
+                        <div class="inputBox">
+                            <input type="number" id="cantidad"/>
+                            <span>Unidades</span>
+                            <i></i>
+                        </div>
+                        <span class="errorForm" id="mensajeErrorCantidad"></span>
+                        <br></br>
+                        <button type="button" class="anadir" value="Añadir" id="añadirProductos">Añadir</button>
+                        <br></br>
+                        <div class="inputBox">
+                            <input type="text" id="listaCarri"/>
+                            <span>Articulos en el carrito</span>
+                            <i></i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" id="precioCarri"/>
+                            <span>Precio total</span>
+                            <i></i>
+                        </div>
+                        <div class="content-select">
+                            <!-- <span>Forma de pago</span> -->
+                            <select name="pago" onchange="ocultarTarjeta()">
+                                <option value="tarjeta" id="tarjeta">Tarjeta</option>
+                                <option value="efectivo" id="efectivo">Efectivo</option>
+                            </select>
+                            <i></i>
+                        </div>
+                        <div class="links">
+                            <input type="checkbox" class="check" id="acepta">Acepto las condiciones de compra</input>
+                            <!-- <span>Acepto las condiciones de compra</span> -->
+                            <!-- <a href="#">Sing up</a> -->
+                        </div>
+                    </div>
+                    <div class="finalbuttoms">
+                        <button type="submit" name="imprimir" id="imprimir" value="Imprimir" disabled>Imprimir</button>
+                        <button type="submit"  id="reset" onclick="resetForm()" class="reset" value="Restablecer">Restablecer</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="payBox" id="payBox">
+            <div class="datosTarjeta" id="datosTarjeta">
+                <div class="datosTarjeta">
+                    <input type="text" placeholder="numeroTarjeta" id="numeroTarjeta"/>
+                    <i></i>
+                </div>
+                <span class="errorForm" id="errorTarjeta">asd</span>
+                <div class="datosTarjeta">
+                    <input type="text" placeholder="nombreTitular" id="nombreTitular"/>
+                    <i></i>
+                </div>
+                <span class="errorForm" id="errorTitular">asd</span>
+                <div class="datosTarjeta">
+                    <input type="text" placeholder="MM/YY" id="caducidad"/>
+                    <i></i>
+                </div>
+                <span class="errorForm" id="errorCaducidad">asd</span>
+                <div class="datosTarjeta">
+                    <input type="text" placeholder="CVC" id="cvc"/>
+                    <i></i>
+                </div>
+                <span class="errorForm" id="errorCVC">asd</span>
+                <br></br>
+                <button type="submit" id="botonPagar">Pagar</button>
+                </div>
+            <div class="importe" id="importeT">
+                <h5><b>Importe a pagar en efectivo</b></h5>
+                <input type="text" id="importe"/>
+                <i></i>
+            </div>
+        </div>
+    </body>
+</html>
