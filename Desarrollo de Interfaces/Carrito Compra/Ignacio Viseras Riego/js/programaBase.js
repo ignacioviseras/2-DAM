@@ -8,6 +8,10 @@ var menError;
 var menErrorPrecio;
 var botonArticulo;
 var Tarjeta = {};
+var errorTarjeta;
+var errorTitular;
+var errorCaducidad;
+var errorCVC;
 
 /**validacion para los campos del formulario */
 function validarFormulario() {
@@ -18,8 +22,8 @@ function validarFormulario() {
       i indica que validaremos letras mayúsculas y minúsculas (case-insensitive) 
   */
   filtroNombre = /^[A-Z]+$/i;
-  /**esto acepta numeros enteros o numeros con 2 decimales si pones 2.
-   * lo da por mal acepta tanto , como .
+  /**esto acepta numeros enteros o numeros con 2 decimales 
+   * si pones 2. lo da por mal acepta tanto , como .
    */
   filtroPrecio = /^[0-9]+?([.,\,][0-9]{2})?$/;
   if (nombreProducto.value.trim() == "") {
@@ -70,14 +74,15 @@ function validarFormulario() {
 
 /* validacion tarjeta */
 function validacionTarjeta() {
-  filtroNumeroTarjeta = /[0-9]{16}/;
+  filtroNumeroTarjeta = /^[0-9]{16}$/;
   filtroNombre = /[a-zA-Z]{0,} [a-zA-Z]{0,} [a-zA-Z]{0,}/;
-  filtroCaducidad = /[0-9]{2}\/[0-9]{2}/;
-  filtroCVC = /[0-9]{3}/
+  filtroCaducidad = /^[0-9]{2}\/[0-9]{2}$/;
+  filtroCVC = /^[0-9]{3}$/
   if (numeroTarjeta.value.trim() == "") {
     errorTarjeta.textContent = "Campo por rellenar";
     return false;
   }
+  errorTarjeta.textContent = "";
   if (!numeroTarjeta.value.match(filtroNumeroTarjeta)) {
     errorTarjeta.textContent = "Numero de Tarjeta Erroneo";
     return false;
@@ -86,6 +91,7 @@ function validacionTarjeta() {
     errorTitular.textContent = "Campo por rellenar";
     return false;
   }
+  errorTitular.textContent = "";
   if (!nombreTitular.value.match(filtroNombre)) {
     errorTitular.textContent = "Tienes que introducir 3 nombres sin caracteres especiales";
     return false;
@@ -94,6 +100,7 @@ function validacionTarjeta() {
     errorCaducidad.textContent = "Campo por rellenar";
     return false;
   }
+  errorCaducidad.textContent = "";
   if (!caducidad.value.match(filtroCaducidad)) {
     errorCaducidad.textContent = "Formato de caducidad xx/xx";
     return false;
@@ -102,7 +109,8 @@ function validacionTarjeta() {
     errorCVC.textContent = "Campo por rellenar";
     return false;
   }
-  if (!cvc.value.match(filtroCaducidad)) {
+  errorCVC.textContent = "";
+  if (!cvc.value.match(filtroCVC)) {
     errorCVC.textContent = "Formato de CVC xxx";
     return false;
   }
@@ -154,7 +162,7 @@ function terminos(){
   if (listado != undefined && total != 0) {
     document.getElementById("imprimir").disabled = false;
   }else{
-    document.getElementById("acepta").value = off;
+    document.getElementById("acepta").checked = false;
     alert("Tienes que introducir elementos en el carrito y sus precios")
   }
 }
@@ -163,7 +171,8 @@ function terminos(){
  * q inicialmente tiene q estar ""oculto""" */
 function imprimir(){
   if (document.getElementById("acepta").checked == true) {
-    alert("Articulos en el carrito " + listado + ". Precio " + total.toFixed(2) + "€ " + "Forma de pago: "+ document.getElementsByName("pago")[0].value)
+    alert("Articulos en el carrito " + listado + ". Precio " + total.toFixed(2) + "€ " 
+    + "Forma de pago: "+ document.getElementsByName("pago")[0].value)
   } else {
     document.getElementById("imprimir").disabled=true;
   }
@@ -171,12 +180,17 @@ function imprimir(){
 
 function inicializarVariables(){
   nombreProducto = document.getElementById("nombreProducto");
+  nombreProducto.focus();
   precioArticluo = document.getElementById("precioArticluo"); 
   cantidad = document.getElementById("cantidad");
   menError = document.getElementById("mensajeError");
   menErrorPrecio = document.getElementById("mensajeErrorPrecio");
   menErrorCantidad = document.getElementById("mensajeErrorCantidad");
   botonArticulo = document.getElementById("añadirProductos");
+  numeroTarjeta = document.getElementById("numeroTarjeta");
+  nombreTitular = document.getElementById("nombreTitular");
+  caducidad = document.getElementById("caducidad");
+  cvc = document.getElementById("cvc");
   errorTarjeta = document.getElementById("errorTarjeta");
   errorTitular = document.getElementById("errorTitular");
   errorCaducidad = document.getElementById("errorCaducidad");
@@ -184,14 +198,21 @@ function inicializarVariables(){
 }
 
 function inicializarEventos(){
-  document.getElementById("añadirProductos").addEventListener("click", guardar);
-  document.getElementById("acepta").addEventListener("click", terminos);
-  document.getElementById("imprimir").addEventListener("click", imprimir);
-  document.getElementById("reset").addEventListener("click", resetForm);
-  /*con el blur hacemos q la validacion se cumpla antes de fulsar el boton de añadir */
+  /*con el blur hacemos q la validacion se cumpla 
+  antes de fulsar el boton de añadir */
   nombreProducto.addEventListener("blur", validarFormulario);
   precioArticluo.addEventListener("blur", validarFormulario);
   cantidad.addEventListener("blur", validarFormulario);
+  document.getElementById("añadirProductos").addEventListener("click", guardar);
+  
+  numeroTarjeta.addEventListener("blur", validacionTarjeta);
+  nombreTitular.addEventListener("blur", validacionTarjeta);
+  caducidad.addEventListener("blur", validacionTarjeta);
+  cvc.addEventListener("blur", validacionTarjeta);
+  document.getElementById("acepta").addEventListener("click", terminos);
+  document.getElementById("imprimir").addEventListener("click", imprimir);
+  document.getElementById("reset").addEventListener("click", resetForm);
+
 }
 
 window.onload = function (){
