@@ -418,3 +418,10 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     bottom: 22px;
     margin-top: 0px;
 }
+
+#pagado{
+    position: relative;
+    right: 87px;
+    bottom: 17px;
+    color: #5ee416;
+}

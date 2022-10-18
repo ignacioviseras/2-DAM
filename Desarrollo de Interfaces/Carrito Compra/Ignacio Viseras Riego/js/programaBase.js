@@ -7,7 +7,7 @@ var listado;
 var menError;
 var menErrorPrecio;
 var botonArticulo;
-var Tarjeta = {};
+var Tarjeta = new Array(4);
 var errorTarjeta;
 var errorTitular;
 var errorCaducidad;
@@ -118,11 +118,12 @@ function validacionTarjeta() {
 }
 
 /*recibir datos tarjeta*/
-/* function guardarTarjeta(){
+function guardarTarjeta(){
   if (validacionTarjeta() != false) {
-    Tarjeta += {"numeroTarjeta.value" "filtroNombre.value"}
+    Tarjeta = [numeroTarjeta.value , nombreTitular.value, caducidad.value, cvc.value];
+    pagado.textContent = "PAGADO";
   }
-} */
+}
 
 /** Aparicion campos del select */
 function ocultarTarjeta() {
@@ -195,6 +196,7 @@ function inicializarVariables(){
   errorTitular = document.getElementById("errorTitular");
   errorCaducidad = document.getElementById("errorCaducidad");
   errorCVC = document.getElementById("errorCVC");
+  pagado = document.getElementById("pagado");
 }
 
 function inicializarEventos(){
@@ -209,6 +211,8 @@ function inicializarEventos(){
   nombreTitular.addEventListener("blur", validacionTarjeta);
   caducidad.addEventListener("blur", validacionTarjeta);
   cvc.addEventListener("blur", validacionTarjeta);
+  document.getElementById("botonPagar").addEventListener("click", guardarTarjeta);
+
   document.getElementById("acepta").addEventListener("click", terminos);
   document.getElementById("imprimir").addEventListener("click", imprimir);
   document.getElementById("reset").addEventListener("click", resetForm);
