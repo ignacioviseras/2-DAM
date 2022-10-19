@@ -32,7 +32,7 @@ function validarFormulario() {
   }
   menError.textContent = "";
   if (!nombreProducto.value.match(filtroNombre)) {
-    menError.textContent = "tienes que poner un nombre de producto correcto";
+    menError.textContent = "Solo caracarteres alfabéticos";
     return false;
   }
   if (precioArticluo.value.trim() == "") {
@@ -158,9 +158,10 @@ function resetForm(){
 /** funcion para aceptar los terminos los cuales no nos dejara
  * poner en caso de no rellenar los campos del form */
 function terminos(){
+  let tipoPago = document.getElementsByName("pago")[0].value;
   if (document.getElementById("acepta").checked == false)
     document.getElementById("imprimir").disabled = true;
-  if (listado != undefined && total != 0) {
+  if (listado != undefined && total != 0 && tipoPago != 'Selecciona') {
     document.getElementById("imprimir").disabled = false;
   }else{
     document.getElementById("acepta").checked = false;
@@ -216,7 +217,6 @@ function inicializarEventos(){
   document.getElementById("acepta").addEventListener("click", terminos);
   document.getElementById("imprimir").addEventListener("click", imprimir);
   document.getElementById("reset").addEventListener("click", resetForm);
-
 }
 
 window.onload = function (){

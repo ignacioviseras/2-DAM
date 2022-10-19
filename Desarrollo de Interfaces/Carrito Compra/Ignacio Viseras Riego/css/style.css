@@ -146,8 +146,8 @@ body{
 }
 
 .links{
-    position: relative;
-    top: 22px;
+    position: absolute;
+    top: 603px;
     display: flex;
     justify-content: left;
     color: #45f3ffa6;
