@@ -23,9 +23,10 @@ function validarFormulario() {
   */
   filtroNombre = /^[A-Z]+$/i;
   /**esto acepta numeros enteros o numeros con 2 decimales 
-   * si pones 2. lo da por mal acepta tanto , como .
+   * si pones 2. lo da por mal
+   * NO ACEPTA COMAS , ya que pilla solo el segund valor
    */
-  filtroPrecio = /^[0-9]+?([.,\,][0-9]{2})?$/;
+  filtroPrecio = /^[0-9]+?([.][0-9]{2})?$/
   if (nombreProducto.value.trim() == "") {
     menError.textContent = "Campo por rellenar";
     return false;
@@ -45,7 +46,7 @@ function validarFormulario() {
     return false;
   }
   if (!precioArticluo.value.match(filtroPrecio)) {
-    menErrorPrecio.textContent = "introduce bn el numero 2 o 2.15";
+    menErrorPrecio.textContent = "introduce bien el numero 2 o 2.15";
     return false;
   }
   if (cantidad.value.trim() == "") {
@@ -69,6 +70,16 @@ function validarFormulario() {
     total += precioArticluo.value * cantidad.value;
     document.getElementById("listaCarri").value = listado;
     document.getElementById("precioCarri").value = total.toFixed(2);
+    nombreProducto.value = "";
+    precioArticluo.value = "";
+    cantidad.value = "";
+    nombreProducto.focus();
+  }else if (nombreProducto.value == "") {
+    nombreProducto.focus();
+  }else if (precioArticluo.value == "") {
+    precioArticluo.focus();
+  }else if (cantidad.value == "") {
+    cantidad.focus();
   }
 }
 
