@@ -1,26 +1,22 @@
 # AE-1. Carrito de la compra
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled.webp)
+![Untitled](fotosReadme/Untitled.webp)
 
 ## Integrantes del grupo
 
 Ignacio Viseras Riego
-
 Antonio Pastor
-
 Luz Lozano
 
 Enlace al proyecto → [Github](https://github.com/ignacioviseras/2-DAM/tree/main/Desarrollo%20de%20Interfaces/Carrito%20Compra)
 
 # Requisitos de la creación del formulario.
 
-Crea una página web dinámica usando JavaScript que implemente las siguientes
-
-especificaciones:
+Crea una página web dinámica usando JavaScript que implemente las siguientes especificaciones:
 
 1.   Que conste de los elementos indicados en la imagen, 
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled.png)
+![Untitled](fotosReadme/Untitled.png)
 
 1. Cuando el usuario rellene las 3 primeras cajas y haga clic en el botón de Añadir deberá sumar el precio de los artículos y las unidades, esta información se almacenará para que se vea finalmente el total de la compra y precio de la misma. Cada vez que se usa el botón deberá desaparecer la información de las 3 primeras cajas para poder escribir, poniendo el foco en la primera, Nombre del artículo.
 
@@ -34,7 +30,7 @@ especificaciones:
 
 Nuestro formulario en vista cliente tiene este resultado:
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%201.png)
+![Untitled](fotosReadme/Untitled%201.png)
 
 Nuestro formulario consta de 3 archivos diferenciados. Un archivo Html donde va el código relacionado con la vista. Complementando al archivo Html tenemos una hoja de estilos Css que hemos optado por un estilo oscuro con contraste de azul  y rojo para los errores.
 
@@ -159,9 +155,9 @@ function guardar() {
 
 Para mostrar el método de pago seleccionado tenemos que partir de la base de que se tienen en encontrar ocultos los elementos usando el css.
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%202.png)
+![Untitled](fotosReadme/Untitled%202.png)
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%203.png)
+![Untitled](fotosReadme/Untitled%203.png)
 
 La manera de mostrar el elemento seleccionado es el siguiente.
 
@@ -199,7 +195,7 @@ function ocultarTarjeta() {
 En caso de Seleccionar la opción de Tarjeta nos devolverá el siguiente formulario.
 Funciona de la misma manera que el formulario de productos pero tiene diferentes filtros.
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%204.png)
+![Untitled](fotosReadme/Untitled%204.png)
 
 filtroNumeroTarjeta
 
@@ -280,7 +276,7 @@ function guardarTarjeta(){
 
 Si queremos imprimir los datos antes tendríamos que aceptar las condiciones
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%205.png)
+![Untitled](fotosReadme/Untitled%205.png)
 
 Creamos una variable que se llamara tipoPago aquí almacenaremos el valor seleccionado del select.
 
@@ -327,7 +323,7 @@ El botón de restablecer ejecuta la función resetForm()
 
 Esta función lo que hace es obtener todo el contenido del id que se le pasa y resetear los valores
 
-![Untitled](AE-1%20Carrito%20de%20la%20compra%20d8d0441274ab48db81ccf891f4ff4327/Untitled%206.png)
+![Untitled](fotosReadme/Untitled%206.png)
 
 ```jsx
 function resetForm(){
