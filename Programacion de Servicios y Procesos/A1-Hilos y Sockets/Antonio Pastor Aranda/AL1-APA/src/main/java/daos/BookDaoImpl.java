@@ -14,14 +14,14 @@ public class BookDaoImpl implements IntBookDao{
 	 
 	 public BookDaoImpl() {
 		 lista= new ArrayList<Book>();
-		 cargarDatos();
+		 loadBooks();
 	 }
 
 
 	
  
  
- private void cargarDatos() {
+ private void loadBooks() {
 	 	Book l1= new Book (01, "El coco 1", "antonio machado1", 11);
 		Book l2= new Book (02, "El coco 2", "antonio machado2", 12);
 		Book l3= new Book (03, "El coco 3", "antonio machado3", 13);
