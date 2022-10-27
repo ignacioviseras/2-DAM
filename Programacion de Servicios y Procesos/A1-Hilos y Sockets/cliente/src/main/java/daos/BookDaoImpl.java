@@ -17,8 +17,6 @@ public class BookDaoImpl implements IntBookDao{
 		 loadBooks();
 	 }
 
-
-	
  
  
  private void loadBooks() {
