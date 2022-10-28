@@ -65,13 +65,15 @@ public class ClientMain {
 				System.out.println(" 1. Search by ISBN");
 				System.out.println(" 2. Search by Tittle");
 				System.out.println(" 3. Search by Author");
-				System.out.println(" 4. Exit");
+				System.out.println(" 4. Add book");
+				System.out.println(" 5. Exit");
 
 				//--------OJO---------
 				//Cuando enviamos un dato mediante un socket lo tenemos que enviar en FORMATO CADENA
 				InfoActions = sc.nextLine();//aqui recibiremos la opcion que se insertara
 
 				//⬇⬇mandamos la informacion usando el stream
+			
 				out.println(InfoActions);
 			
 				System.out.println("Client-> Waiting for a result from the server");
@@ -79,7 +81,7 @@ public class ClientMain {
 				//------Ahora esperaremos hasta que el servidor nos responda------
 				String result = buffer.readLine();
 
-				if("4".equalsIgnoreCase(InfoActions)) {//en caso de ser 4 nos sacara del programa
+				if("5".equalsIgnoreCase(InfoActions)) {//en caso de ser 4 nos sacara del programa
 					continues = false;
 				}else {
 					System.out.println(result);

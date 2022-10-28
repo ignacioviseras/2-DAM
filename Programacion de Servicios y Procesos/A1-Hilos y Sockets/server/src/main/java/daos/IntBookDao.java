@@ -10,8 +10,12 @@ public interface IntBookDao {
 
 	Book searchOne(int isbn);
 
-	Book searchTittle();
-	
-	Book searchAuthor();
+	String findByIsbn(int isbn);
+
+	String findByTittle(String tittle);
+
+	int addBook(Book book);
+
+	List<Book> findByAuthor(String Author);
 	
 }
