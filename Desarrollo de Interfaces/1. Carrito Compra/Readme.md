@@ -30,7 +30,9 @@ Crea una página web dinámica usando JavaScript que implemente las siguientes e
 
 Nuestro formulario en vista cliente tiene este resultado:
 
-![Untitled](fotosReadme/Untitled%201.png)
+<p align="center">
+  <img src="fotosReadme/Untitled%201.png">
+</p>
 
 Nuestro formulario consta de 3 archivos diferenciados. Un archivo Html donde va el código relacionado con la vista. Complementando al archivo Html tenemos una hoja de estilos Css que hemos optado por un estilo oscuro con contraste de azul  y rojo para los errores.
 
@@ -52,16 +54,20 @@ Funcionamiento de los filtros.
 1. filtroNombre
     
     ^ indica que el patrón debe iniciar con los caracteres dentro de los corchetes
+    
     [A-Z] indica que los caracteres admitidos son letras del alfabeto
-    + indica que los caracteres dentro de los corchetes se pueden repetir
+    
+    '+' indica que los caracteres dentro de los corchetes se pueden repetir
+    
     $ indica que el patrón finaliza con los caracteres que están dentro de los corchetes.
+    
     i indica que validaremos letras mayúsculas y minúsculas (case-insensitive)
     
 2. filtroPrecio
     
     Además de las reglas anteriores tiene unas nuevas.
     
-    + ? indica que lo que viene a continuación puede llegar a aparecer pero no esta obligado a que esto ocurra.
+    +? indica que lo que viene a continuación puede llegar a aparecer pero no esta obligado a que esto ocurra.
     
     ([.][0-9]{2})
     
@@ -155,9 +161,13 @@ function guardar() {
 
 Para mostrar el método de pago seleccionado tenemos que partir de la base de que se tienen en encontrar ocultos los elementos usando el css.
 
-![Untitled](fotosReadme/Untitled%202.png)
+<p align="center">
+  <img src="fotosReadme/Untitled%202.png">
+</p>
 
-![Untitled](fotosReadme/Untitled%203.png)
+<p align="center">
+  <img src="fotosReadme/Untitled%203.png">
+</p>
 
 La manera de mostrar el elemento seleccionado es el siguiente.
 
@@ -195,24 +205,26 @@ function ocultarTarjeta() {
 En caso de Seleccionar la opción de Tarjeta nos devolverá el siguiente formulario.
 Funciona de la misma manera que el formulario de productos pero tiene diferentes filtros.
 
-![Untitled](fotosReadme/Untitled%204.png)
+<p align="center">
+  <img src="fotosReadme/Untitled%204.png">
+</p>
 
 filtroNumeroTarjeta
 
-Aquí validamos que solo se puedan introducir 16 números.
++ Aquí validamos que solo se puedan introducir 16 números.
 
 filtroNombre
 
-Validamos que se tenga que introducir 3 tramos de texto separados por espacios.
-Los tramos de textos como mínimo tienen que contener 1 letra y no tienen máximo.
++ Validamos que se tenga que introducir 3 tramos de texto separados por espacios.
++ Validamos que los tramos de textos como mínimo tienen que contener 1 letra y no tienen máximo.
 
 filtroCaducidad
 
-El primer tramo de 2 números esta separado del segundo que también son solo 2 números por una barra.
++ El primer tramo de 2 números esta separado del segundo que también son solo 2 números por una barra.
 
 filtroCVC
 
-Admitimos solo la introducción de 3 números.
++ Admitimos solo la introducción de 3 números.
 
 ```jsx
 function validacionTarjeta() {
@@ -276,19 +288,21 @@ function guardarTarjeta(){
 
 Si queremos imprimir los datos antes tendríamos que aceptar las condiciones
 
-![Untitled](fotosReadme/Untitled%205.png)
+<p align="center">
+    <img src="fotosReadme/Untitled%205.png">
+</p>
 
-Creamos una variable que se llamara tipoPago aquí almacenaremos el valor seleccionado del select.
+1. Creamos una variable que se llamara tipoPago aquí almacenaremos el valor seleccionado del select.
 
-Luego comprobamos que si el checkbox esta desactivado, de ser así deshabilitáremos la utilidad del botón.
+2. Luego comprobamos que si el checkbox esta desactivado, de ser así deshabilitáremos la utilidad del botón.
 
-Para **activar** el botón de imprimir lo que hacemos es comprobar que en las variables: listado y total tienen contenido ademas de eso tambien comprobamos que tipoPago sea diferente a Seleccionado ya que tiene que introducir un metodo de pago.
+3. Para **activar** el botón de imprimir lo que hacemos es comprobar que en las variables: listado y total tienen contenido ademas de eso tambien comprobamos que tipoPago sea diferente a Seleccionado ya que tiene que introducir un metodo de pago.
 
-Una vez comprobado eso se nos activara el botón.
+4. Una vez comprobado eso se nos activara el botón.
 
-De lo contrario desmarcaremos el checkbox y soltaremos un alert avisando de que tienen que completar los campos
+5. De lo contrario desmarcaremos el checkbox y soltaremos un alert avisando de que tienen que completar los campos
 
-```
+```jsx
 function terminos(){
   let tipoPago = document.getElementsByName("pago")[0].value;
   if (document.getElementById("acepta").checked == false)
@@ -323,7 +337,9 @@ El botón de restablecer ejecuta la función resetForm()
 
 Esta función lo que hace es obtener todo el contenido del id que se le pasa y resetear los valores
 
-![Untitled](fotosReadme/Untitled%206.png)
+<p align="center">
+    <img src="fotosReadme/Untitled%206.png">
+</p>
 
 ```jsx
 function resetForm(){
