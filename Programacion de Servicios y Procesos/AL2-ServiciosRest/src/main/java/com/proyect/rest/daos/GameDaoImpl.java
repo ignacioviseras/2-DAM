@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
 
 import com.proyect.rest.beans.Game;
 
 
-@Service
+@Component
 public class GameDaoImpl implements IntGameDao{
 	
 	@Autowired
 	private IntGameDao gdao;
+	
+	
 	private List<Game> list;
 	
 	
 	
 	public GameDaoImpl() {
 		 list = new ArrayList<Game>();
-		loadingGameList();
+		 loadingGameList();
 	}
 
 	private void loadingGameList(){
