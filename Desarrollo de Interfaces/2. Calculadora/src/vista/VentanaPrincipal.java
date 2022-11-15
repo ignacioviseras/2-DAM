@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controlador.ManejadorEventos;
+
 public class VentanaPrincipal extends JFrame{
 	
 	private JLabel icono, numero1, numero2, resultado, valorResultado;
@@ -66,7 +68,6 @@ public class VentanaPrincipal extends JFrame{
 		
 		
 		//-----Botones-----
-		
 		//botonSuma
 		btnSuma = new JButton("Sumar");
 		btnSuma.setBounds(58, 251, 82, 23);
@@ -112,12 +113,76 @@ public class VentanaPrincipal extends JFrame{
 		resultado.setForeground(new Color(0, 0, 0));//color texto -> negro
 		add(resultado);
 		
-		valorResultado = new JLabel("..");
+		valorResultado = new JLabel("");
 		valorResultado.setBounds(125, 395, 60, 14);
 		valorResultado.setHorizontalAlignment(SwingConstants.CENTER);
 		valorResultado.setFont(new Font(null, Font.BOLD, 14));//tamaño texto
 		valorResultado.setForeground(new Color(0, 0, 0));//color texto -> negro
 		add(valorResultado);
+		
 	}
+
+	
+	public void establecerManejador(ManejadorEventos manejador) {
+		btnSuma.addActionListener(manejador);
+		btnResta.addActionListener(manejador);
+		btnMulti.addActionListener(manejador);
+		btnDiv.addActionListener(manejador);
+		btnRaiz2.addActionListener(manejador);
+		btnRaiz3.addActionListener(manejador);
+	}
+	
+	
+	//-----Gets y sets CajasdeTexto
+	public JTextField getTxtN1() {
+		return txtN1;
+	}
+	
+	public void setTxtN1(JTextField txtN1) {
+		this.txtN1 = txtN1;
+	}
+	
+	public JTextField getTxtN2() {
+		return txtN2;
+	}
+	
+	public void setTxtN2(JTextField txtN2) {
+		this.txtN2 = txtN2;
+	}
+	
+	
+	//-----Gets botones-----
+	public JButton getBtnSuma() {
+		return btnSuma;
+	}
+
+
+	public JButton getBtnResta() {
+		return btnResta;
+	}
+
+	public JButton getBtnMulti() {
+		return btnMulti;
+	}
+
+	public JButton getBtnDiv() {
+		return btnDiv;
+	}
+
+	public JButton getBtnRaiz2() {
+		return btnRaiz2;
+	}
+
+	public JButton getBtnRaiz3() {
+		return btnRaiz3;
+	}
+
+	
+	//-----Get Resultado-----
+	
+	public JLabel getValorResultado() {
+		return valorResultado;
+	}
+	
 	
 }
