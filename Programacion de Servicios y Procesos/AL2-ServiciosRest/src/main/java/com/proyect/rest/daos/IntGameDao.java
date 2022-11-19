@@ -7,10 +7,10 @@ import com.proyect.rest.beans.Game;
 public interface IntGameDao {
 	
 	List<Game> findAll();
-	int newGame (Game game);
-	int deleteGame (int id);
-	int modifyGame (int id);
+	Game deleteGame (int id);
 	Game findById (int id);
+	void newGame (Game g);
+	Game modifyGame (Game g);
 	
 
 }

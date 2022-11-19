@@ -1,4 +1,4 @@
-package com.proyect.rest.beans;
+package com.proyect.beans;
 
 
 import java.util.Objects;

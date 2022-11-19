@@ -18,7 +18,7 @@ public class GameDaoImpl implements IntGameDao{
 	
 	
 	private List<Game> list;
-	
+	private int id;
 	
 	
 	public GameDaoImpl() {
@@ -27,62 +27,68 @@ public class GameDaoImpl implements IntGameDao{
 	}
 
 	private void loadingGameList(){
-		list.add(new Game(1,"call of duty", "univision", 11.0));
-		list.add(new Game(2,"sims", "univision2", 12.0));
-		list.add(new Game(3,"warcraft", "univision3", 13.0));
-		list.add(new Game(4,"age of empires II", "univision4", 14.0));
-		list.add(new Game(5,"minecraft", "univision5", 15.0));
+		list.add(new Game(id++,"call of duty", "univision", 11.0));
+		list.add(new Game(id++,"sims", "univision2", 12.0));
+		list.add(new Game(id++,"warcraft", "univision3", 13.0));
+		list.add(new Game(id++,"age of empires II", "univision4", 14.0));
+		list.add(new Game(id++,"minecraft", "univision5", 15.0));
 	}
 
 	
 	@Override
 	public List<Game> findAll() {
-		
-		return gdao.findAll();
+		return list;
 	}
 
 	@Override
-	public int newGame(Game game) {
-		if(list.contains(game)) {
-            return 1;
-        }
-            list.add(game);
-		return 0;
+	public void newGame(Game g) {
+		List<Game> listaux = new ArrayList<Game>();
+		for(Game game : listaux)
+		{
+			if(!(g.getId() == game.getId() || g.getName().equalsIgnoreCase(game.getName()))) {
+				g.setId(id++);
+				list.add(g);
+			}
+		}
 	}
-
+	
 	@Override
-	public int deleteGame(int id) {
-		Game aux = new Game();
-		aux.setId(id);
-		int pos = list.indexOf(aux);
-		if (pos == -1) 
-			return 0;
-		else
-			 list.remove(aux);
-		return 1;
-	}
-
-	@Override
-	public int modifyGame(int id) {
-		Game aux = new Game();
-		aux.setId(id);
-		int pos = list.indexOf(aux);
-		if (pos == -1) 
-			return 0;
-		else
-			 list.set(pos, aux);
-		return 1;
-	}
-
-	@Override
-	public Game findById(int id) {
-		Game aux = new Game();
-		aux.setId(id);
-		int pos = list.indexOf(aux);
-		if (pos == -1)
+	public Game deleteGame(int id) {
+		try {
+			return list.remove(id);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("delete -> Persona fuera de rango");
 			return null;
-		else
-			return list.get(pos);
+		}
 	}
 
+	@Override
+	public Game modifyGame(Game g) {
+		try {
+			List<Game> listaux = new ArrayList<Game>();
+			Game aux = list.get(g.getId());
+			for(Game game : listaux)
+			{
+				if(!(g.getName().equalsIgnoreCase(game.getName()))) {
+					aux.setName(g.getName());
+					aux.setCompany(g.getCompany());
+					aux.setScore(g.getScore());
+					return aux;
+				}
+			}
+			return null;			
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("No se pudo añadir");
+			return null;
+		}
+	}
+
+	public Game findById(int posicion) {
+		try {
+			return list.get(posicion);
+		} catch (IndexOutOfBoundsException iobe) {
+			System.out.println("No existe el juego");
+			return null;
+		}
+	}
 }
