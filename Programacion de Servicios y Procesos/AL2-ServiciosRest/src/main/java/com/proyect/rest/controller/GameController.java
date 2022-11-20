@@ -86,4 +86,9 @@ public class GameController {
 		return new ResponseEntity<Game>(g, HttpStatus.CREATED);//201 avisa de q se creo con exito
 	}
 	
+	
+	@GetMapping(value = "inicio")
+	public String obtenerMensaje() {
+		return "Se esta cargando con exito";
+	}
 }

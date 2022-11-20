@@ -13,9 +13,6 @@ import com.proyect.rest.beans.Game;
 @Component
 public class GameDaoImpl implements IntGameDao{
 	
-	@Autowired
-	private IntGameDao gdao;
-	
 	
 	private List<Game> list;
 	private int id;
