@@ -42,8 +42,8 @@ public class GameController {
 	@GetMapping(path="game/findAll", produces= MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Game>> findAll(){
 		System.out.println("Buscando toda la lista");
-		List<Game> g = null;
-		g = gdao.findAll();
+		//List<Game> g = null;
+		List<Game> g = gdao.findAll();
 		if(g !=null) {
 			return new ResponseEntity<List<Game>>(g,HttpStatus.OK);
 		}else {

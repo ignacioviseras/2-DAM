@@ -1,8 +1,6 @@
 package com.proyect.rest.beans;
 
 
-import java.util.Objects;
-
 
 
 public class Game {

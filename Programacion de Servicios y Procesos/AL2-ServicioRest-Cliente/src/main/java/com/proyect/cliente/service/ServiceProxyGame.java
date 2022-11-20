@@ -26,7 +26,7 @@ public class ServiceProxyGame {
 	//-----Alta-----
 	public Game newGame(Game g) {
 		try {
-			ResponseEntity<Game> game = restTemplate.postForEntity(URL, g, Game.class);
+			ResponseEntity<Game> game = restTemplate.postForEntity(URL + "newGame", g, Game.class);
 			System.out.println("Cliente: "+ game.getStatusCodeValue());
 			return game.getBody();
 		} catch (HttpClientErrorException e) {//Erores de cliente -> 400
@@ -60,7 +60,7 @@ public class ServiceProxyGame {
 	//-----Listar todos-----
 	public List<Game> findAll() {
 		try {
-			ResponseEntity<Game[]> response = restTemplate.getForEntity(URL ,Game[].class);
+			ResponseEntity<Game[]> response = restTemplate.getForEntity(URL + "findAll",Game[].class);
 			Game[] arrayGame = response.getBody();
 			return Arrays.asList(arrayGame);
 		} catch (HttpClientErrorException e) {

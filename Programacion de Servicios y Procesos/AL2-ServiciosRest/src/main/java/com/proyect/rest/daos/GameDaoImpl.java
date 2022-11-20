@@ -2,8 +2,6 @@ package com.proyect.rest.daos;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -15,7 +13,7 @@ public class GameDaoImpl implements IntGameDao{
 	
 	
 	private List<Game> list;
-	private int id;
+	private int id = 0;
 	
 	
 	public GameDaoImpl() {
@@ -80,6 +78,7 @@ public class GameDaoImpl implements IntGameDao{
 		}
 	}
 
+	@Override
 	public Game findById(int posicion) {
 		try {
 			return list.get(posicion);
