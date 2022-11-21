@@ -54,7 +54,7 @@ public class GameDaoImpl implements IntGameDao{
 		try {
 			return list.remove(id);
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("delete -> Persona fuera de rango");
+			System.out.println("delete -> Juego fuera de rango");
 			return null;
 		}
 	}

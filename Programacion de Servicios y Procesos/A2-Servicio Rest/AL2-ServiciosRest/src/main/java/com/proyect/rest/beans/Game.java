@@ -68,31 +68,4 @@ public class Game {
 	public String toString() {
 		return "Game [id=" + id + ", name=" + name + ", company=" + company + ", score=" + score + "]";
 	}
-
-
-	/*@Override
-	public int hashCode() {
-		return Objects.hash(company, id, name, score);
-	}*/
-
-
-	/*@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Game other = (Game) obj;
-		return Objects.equals(company, other.company) && id == other.id && Objects.equals(name, other.name)
-				&& Objects.equals(score, other.score);
-	}*/
-
-	
-	
-	
-	
-	
-	
 }
