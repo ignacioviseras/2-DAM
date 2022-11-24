@@ -2,7 +2,10 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Toolkit;
+import java.io.IOException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,7 +38,7 @@ public class VentanaPrincipal extends JFrame{
 	}
 	
 	private void inicializarComponentes() {
-		//icono inicio
+		//-----icono inicio-----
 		icono = new JLabel (new ImageIcon("src/fotos/inicio.gif"));//foto inicio
 		icono.setBounds(98, 6, 112, 112);//ubicacion / tamaño
 		add(icono);//se añade
@@ -83,7 +86,7 @@ public class VentanaPrincipal extends JFrame{
 		//botonMultiplicacion
 		btnMulti = new JButton("Múltiplicar");
 		btnMulti.setBounds(58, 285, 82, 23);
-		btnMulti.setFont(new Font("Tahoma", ABORT, 11));
+		btnMulti.setFont(new Font(null, Font.PLAIN, 11));//hacemos q se pueda visualizar el texto en la caja
 		btnMulti.setBackground(new Color(184, 189, 122));
 		add(btnMulti);
 		
@@ -106,19 +109,27 @@ public class VentanaPrincipal extends JFrame{
 		add(btnRaiz3);
 		
 		//-----Resultado-----
-		resultado = new JLabel("Resultado");
-		resultado.setBounds(119, 370, 75, 14);
-		resultado.setHorizontalAlignment(SwingConstants.CENTER);
-		resultado.setFont(new Font(null, Font.BOLD, 14));//tamaño texto
-		resultado.setForeground(new Color(0, 0, 0));//color texto -> negro
-		add(resultado);
 		
-		valorResultado = new JLabel("");
-		valorResultado.setBounds(125, 395, 60, 14);
-		valorResultado.setHorizontalAlignment(SwingConstants.CENTER);
-		valorResultado.setFont(new Font(null, Font.BOLD, 14));//tamaño texto
-		valorResultado.setForeground(new Color(0, 0, 0));//color texto -> negro
-		add(valorResultado);
+		try {
+			Font fuente = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../fuentes/Robotica.ttf"));
+			resultado = new JLabel("Resultado");
+			resultado.setBounds(105, 370, 100, 14);
+			resultado.setHorizontalAlignment(SwingConstants.CENTER);
+			resultado.setFont(fuente.deriveFont(Font.PLAIN, 14));//tamaño texto
+			resultado.setForeground(new Color(0, 0, 0));//color texto -> negro
+			add(resultado);
+			
+			valorResultado = new JLabel("");
+			valorResultado.setBounds(58, 395, 190, 14);
+			valorResultado.setHorizontalAlignment(SwingConstants.CENTER);
+			valorResultado.setFont(fuente.deriveFont(Font.PLAIN, 14));//tamaño texto
+			valorResultado.setForeground(new Color(0, 0, 0));//color texto -> negro
+			add(valorResultado);
+		} catch (FontFormatException  e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

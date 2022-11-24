@@ -34,10 +34,7 @@ public class ManejadorEventos implements ActionListener{
 		//Pattern p = Pattern.compile("^[0-9]+?([.][0-9]{2})?$");
 		Pattern p = Pattern.compile("^[0-9]+([.][0-9]+)?$");
 		Matcher m = p.matcher(numero.toString());
-		//int DoubleToInt;
 		
-		//if((DoubleToInt = Integer.parseInt(numero.toString())) = true)
-			//return true;
 		return m.matches();
 	}
 	
@@ -45,8 +42,6 @@ public class ManejadorEventos implements ActionListener{
 	//accion de los botones
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Double n1 = 0.00;
-		//Double n2 = 0.00;
 		
 		//botonSuma
 		if(e.getSource() == ventana.getBtnSuma()) {
@@ -182,10 +177,8 @@ public class ManejadorEventos implements ActionListener{
 				}
 			}else {
 				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Contraseña", JOptionPane.INFORMATION_MESSAGE);
-			}
-				
+			}	
 		}
-		
 		
 	}
 	
