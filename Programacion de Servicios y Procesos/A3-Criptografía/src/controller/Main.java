@@ -1,6 +1,8 @@
 package controller;
 
 import java.security.GeneralSecurityException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +10,12 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+import beans.Users;
+
 public class Main {
+	
+	private Users user;
+	private static List<Users> list;
 	
 	public static final Scanner scanner = new Scanner(System.in);
 	
@@ -16,8 +23,37 @@ public class Main {
 		return scanner.nextLine();
 	}
 	
-	public static void main(String[] args) {
-		try {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
+		System.out.println("lilsta " + list);
+		/*int intento = 0;
+		byte[] texto = "asd".getBytes();
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
+		md.update(texto);
+		
+		byte[] resumen = md.digest();
+		String mensaje = new String(resumen);
+		System.out.println("hash 512 " + mensaje);
+		
+		MessageDigest nuevo = MessageDigest.getInstance("SHA-512");
+		String passwd = nextLine();
+		byte[] passwdByte = passwd.getBytes();
+		nuevo.update(passwdByte);
+		byte[] hashPasswd = nuevo.digest();
+		String limpio = new String(hashPasswd);
+		System.out.println("hash scanner " + limpio);
+		if(intento <= 3) {
+			if(limpio.equals(mensaje)) {
+				System.out.println("son iguales");
+			}else {
+				intento++;
+				System.out.println("Contraseña erronea intento nº "+ intento +"/3");
+			}
+		}else {
+			System.out.println("Numero de intentos superado");	
+			
+		}*/
+		
+		/*try {
 			//creamos un generador de claves
 			KeyGenerator genKey = KeyGenerator.getInstance("AES");
 			//creamos la clave
@@ -56,7 +92,7 @@ public class Main {
 					System.out.println("mensaje cifrado-> " + EncryptedMessage);
 				}
 				if(opcion.equals("2")) {
-					//----Descifrar----
+					//----Descifrar----					
 					//le de decimos al cifrador que queremos hacer la accion de DESCIFRAR Cipher.DECRYPT_MODE
 					//y que la clave que usaremos sera la de la variable key
 					cipher.init(Cipher.DECRYPT_MODE, key);
@@ -77,7 +113,7 @@ public class Main {
 		} catch (GeneralSecurityException e) {
 			System.out.println("Error->  " + e.getMessage());
 			e.printStackTrace();
-		}
+		}*/
 	}
 			
 }
