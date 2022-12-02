@@ -50,7 +50,7 @@ public class Users implements Serializable{
 	
   public Users(String name, String password){
     this.name = name;
-  this.password = password;
+    this.password = password;
   }
 ```
 
@@ -87,7 +87,7 @@ public class UsersDaoImpl implements IntUsersDao{
 	
   public UsersDaoImpl() {
     list = new ArrayList<Users>();
-   loadingUsersList();
+    loadingUsersList();
   }
 ```
 
