@@ -28,17 +28,17 @@ public class Main {
 			System.out.println("----introduce un nombre----");
 			String nombre = nextLine();
 			
-			MessageDigest nuevo = MessageDigest.getInstance("SHA-512");
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
 			System.out.println("----introduce una contraseña----");
 			String passwd = nextLine();
 			byte[] passwdByte = passwd.getBytes();
-			nuevo.update(passwdByte);
-			byte[] hashPasswd = nuevo.digest();
-			String limpio = new String(hashPasswd);
-			System.out.println("hash contraseña escrita " + limpio);
+			md.update(passwdByte);
+			byte[] hashPasswd = md.digest();
+			String strHashPw = new String(hashPasswd);
+			System.out.println("hash contraseña escrita " + strHashPw);
 			System.out.println("hash contraseña del user " + udao.getCon(nombre));
 			System.out.println("");
-			if(limpio.equals(udao.getCon(nombre))) {
+			if(strHashPw.equals(udao.getCon(nombre))) {
 				try {
 					//creamos un generador de claves
 					KeyGenerator genKey = KeyGenerator.getInstance("AES");
