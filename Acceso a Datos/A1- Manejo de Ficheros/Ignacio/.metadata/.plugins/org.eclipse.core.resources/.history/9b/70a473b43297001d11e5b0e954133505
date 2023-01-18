@@ -1,0 +1,54 @@
+package dao;
+
+import java.util.ArrayList;
+
+import beans.Coche;
+
+public class CocheDaoImpl implements IntCocheDao{
+
+	private ArrayList<Coche> carList, aux;
+	
+	
+	/**
+	 * Metodo para CREAR un coche nuevo
+	 * @return 1 en caso de que EXISTA
+	 *  <br> 
+	 * 		 0 en caso de que SE CREE
+	 */
+	@Override
+	public int newCar(Coche coche) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * Metodo para BORRAR un coche
+	 * @param id <li>ID del coche que se borrara
+	 */
+	@Override
+	public Boolean deleteCar(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Metodo para BUSCAR un coche
+	 * @param id <li>ID del coche que se quiere buscar
+	 */
+	@Override
+	public Coche findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Metodo para CREAR un coche nuevo
+	 * @return Devuelve la lista de coches
+	 */
+	@Override
+	public ArrayList<Coche> listCar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

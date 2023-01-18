@@ -1,0 +1,71 @@
+package Controller;
+
+import java.util.Scanner;
+
+import beans.Coche;
+
+public class MainCoche {
+
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public static String nextLine() {
+		return scanner.nextLine();
+	}	
+	
+	public static void main(String[] args) {
+			
+			System.out.println("===========Iniciando Aplicacion============");
+			Boolean continua = true;
+			while (continua == true) {
+				System.out.println("1. Añadir nuevo coche\n" + "2. Borrar coche por id\n"
+						+ "3. Consulta coche por id\n" + "4. Listado de coches\n"
+						+ "5. Exportar coches a archivo CSV\n" + "6. Terminar el programa\n" );
+				
+				Scanner sc = new Scanner(System.in);
+				String opcion = nextLine();
+				if(opcion.equals("1")) {//   ======
+					Coche cAux = new Coche();
+					//Scanner dt = new Scanner(System.in);
+					int id = Integer.parseInt(nextLine());
+					System.out.println("======ID======");
+					cAux.setId(id);
+					
+					String matricula = nextLine();
+					System.out.println("======Numero de matricula======");
+					cAux.setMatricula(matricula);
+					
+					String marca = nextLine();
+					System.out.println("======Marca======");
+					cAux.setMarca(marca);
+					
+					System.out.println("======Modelo======");
+					cAux.setModelo(dt.nextLine());
+					
+					System.out.println("======Color======");
+					cAux.setColor(dt.nextLine());
+					
+					System.out.println(cAux);
+					dt.close();
+					sc.close();
+				}
+				if(opcion.equals("2")) {
+					System.out.println("op 2\n");
+				}
+				if(opcion.equals("3")) {
+					System.out.println("op 3\n");
+				}
+				if(opcion.equals("4")) {
+					System.out.println("op 4\n");
+				}
+				if(opcion.equals("5")) {
+					System.out.println("op 5\n");
+				}
+				if(opcion.equals("6")) {//terminamos la ejecucion del programa
+					System.out.println("Vuelva pronto");
+					sc.close();
+					continua = false;
+				}
+			}
+		}
+	
+	}

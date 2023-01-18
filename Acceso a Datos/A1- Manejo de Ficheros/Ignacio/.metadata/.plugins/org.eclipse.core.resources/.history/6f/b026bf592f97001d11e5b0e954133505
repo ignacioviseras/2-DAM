@@ -1,0 +1,23 @@
+package beans;
+
+import java.io.Serializable;
+
+public class Coche implements Serializable{
+
+	int id;
+	String matricula, marca, modelo, color;
+	private static final long serialVersionUID = 1L;
+	
+	public Coche() {
+		
+	}
+	
+	public Coche(int id,String matricula,String marca,String modelo,String color) {
+		this.id = id;
+		this.matricula = matricula;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.color = color;
+	}
+	
+}

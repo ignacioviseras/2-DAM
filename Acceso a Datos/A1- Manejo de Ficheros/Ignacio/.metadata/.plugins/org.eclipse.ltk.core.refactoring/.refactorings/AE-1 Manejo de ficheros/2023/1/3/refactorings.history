@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;aux&apos; in &apos;dao.CocheDaoImpl.deleteCar(...)&apos; to &apos;cAux&apos;&#x0D;&#x0A;- Original project: &apos;AE-1 Manejo de ficheros&apos;&#x0D;&#x0A;- Original element: &apos;dao.CocheDaoImpl.deleteCar(int).aux&apos;&#x0D;&#x0A;- Renamed element: &apos;aux&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;aux&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;dao{CocheDaoImpl.java[CocheDaoImpl~deleteCar~I@aux!770!792!776!778!QCoche;!0!false" name="cAux" references="true" stamp="1674048374081" version="1.0"/>
+</session>

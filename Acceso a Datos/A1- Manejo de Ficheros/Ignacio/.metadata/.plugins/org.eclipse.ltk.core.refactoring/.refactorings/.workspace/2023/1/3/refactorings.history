@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;AE-1. Manejo de ficheros&apos;" deleteContents="true" description="Delete resource &apos;AE-1. Manejo de ficheros&apos;" element1="/AE-1. Manejo de ficheros" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1674045847869"/>
+</session>

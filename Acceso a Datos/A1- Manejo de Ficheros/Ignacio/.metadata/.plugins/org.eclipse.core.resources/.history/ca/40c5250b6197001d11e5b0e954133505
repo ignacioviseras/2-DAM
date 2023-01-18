@@ -1,0 +1,90 @@
+package Controller;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
+import beans.Coche;
+import dao.CocheDaoImpl;
+import dao.IntCocheDao;
+
+public class MainCoche {
+
+	public static final String NOMBRE_FICHERO = "agenda.dat";
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public static String nextLine() {
+		return scanner.nextLine();
+	}	
+	
+	public static void main(String[] args) {
+		CocheDaoImpl cdao = new CocheDaoImpl();
+			
+		System.out.println("===========Iniciando Aplicacion============");
+		Boolean continua = true;
+		while (continua == true) {
+			System.out.println("1. Añadir nuevo coche\n" + "2. Borrar coche por id\n"
+					+ "3. Consulta coche por id\n" + "4. Listado de coches\n"
+					+ "5. Exportar coches a archivo CSV\n" + "6. Terminar el programa\n" );
+			
+			Scanner sc = new Scanner(System.in);
+			String opcion = nextLine();
+			if(opcion.equals("1")) {//Añadir coche
+				Coche cAux = new Coche();
+				
+				System.out.println("======ID======");
+				cAux.setId(Integer.parseInt(nextLine()));
+				System.out.println("======Numero de matricula======");
+				cAux.setMatricula(nextLine());
+				System.out.println("======Marca======");
+				cAux.setMarca(nextLine());
+				System.out.println("======Modelo======");
+				cAux.setModelo(nextLine());
+				System.out.println("======Color======");
+				cAux.setColor(nextLine());
+				
+				System.out.println();
+				if (cdao.newCar(cAux) == 1) {//en caso de que no se cree
+					System.out.println("No se pudo crear ya que hay un coche "
+										+ "con el mismo id/matricula\n");
+				}else
+					System.out.println("Creado con exito " + cAux);
+			}
+			if(opcion.equals("2")) {//Borrar coche
+				System.out.println("======Inserte el ID======");
+				if(cdao.deleteCar(Integer.parseInt(nextLine())) == true) {
+					System.out.println("Se borro exitosamente\n");
+				}else
+					System.out.println("No se pudo borrar el coche\n");
+			}
+			if(opcion.equals("3")) {//Buscar coche
+				System.out.println("======Inserta el ID======");
+				System.out.println(cdao.findById(Integer.parseInt(nextLine())));
+			}
+			if(opcion.equals("4")) {//Listar coche
+				cdao.listCar();
+			}
+			if(opcion.equals("5")) {//Exportar a .csv
+				
+				
+			}
+			if(opcion.equals("6")) {//terminamos la ejecucion del programa y exportamos datos a .dat
+				System.out.println("Vuelva pronto");
+				sc.close();
+				try(FileOutputStream file = new FileOutputStream(NOMBRE_FICHERO);//asi estariamos sobreescribiendo el contenido
+						ObjectOutputStream buffer = new ObjectOutputStream(file)){
+					
+				}catch (IOException e){
+					System.out.println("No se pudo abrir el fichero");
+					System.out.println(e.getMessage());
+					return;
+				}
+				
+				continua = false;
+			}
+		}
+	}
+}
+	
+
