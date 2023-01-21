@@ -1,0 +1,7 @@
+package beans;
+
+public class libro extends materia{
+
+	int isbn;
+	String titulo, autor, editorial;
+}

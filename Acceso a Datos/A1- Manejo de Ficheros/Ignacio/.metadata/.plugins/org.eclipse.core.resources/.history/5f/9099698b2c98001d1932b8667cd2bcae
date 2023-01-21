@@ -1,0 +1,7 @@
+package beans;
+
+public class materia {
+	
+	int codigo_materia;
+	String nombre;
+}

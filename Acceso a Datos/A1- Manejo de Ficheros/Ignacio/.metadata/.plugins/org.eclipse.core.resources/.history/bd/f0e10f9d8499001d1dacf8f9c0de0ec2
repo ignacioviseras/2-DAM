@@ -1,0 +1,222 @@
+package Controller;
+
+
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.csvreader.CsvWriter;
+
+import beans.Coche;
+import dao.CocheDaoImpl;
+
+
+public class MainCoche {
+	public static final String NOMBRE_FICHERO = "agenda.dat";
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public static String nextLine() {
+		return scanner.nextLine();
+		
+	}	
+	
+	public static void main(String[] args) {
+		CocheDaoImpl cdao = new CocheDaoImpl();
+			
+		System.out.println("===========Iniciando Aplicacion============");
+		
+		//Cargar datos en array
+		File fichero = new File("agenda.dat");
+		if(fichero.exists()){//si existe el fichero agenda.dat
+			System.out.println("Cargando fichero...");
+			try(FileInputStream file = new FileInputStream("agenda.dat");
+					ObjectInputStream buffer = new ObjectInputStream(file);){
+				
+				boolean eof = false;
+				Coche c;
+				while(!eof) {
+//				while(file.available() > 0) {
+					try {
+						
+						c = (Coche) buffer.readObject();
+						System.out.println(c);
+						
+					}catch (EOFException e) {//si salta la excepcion termino el fichero
+						System.out.println("Se cargaron los datos con exito");
+						eof = true;
+					}catch(IOException e2){
+						System.out.println("Error al leer los contactos de la agenda");
+						System.out.println(e2.getMessage());
+					}catch(ClassNotFoundException e3){
+						System.out.println("La clase de contacto no se cargo en memoria");
+						System.out.println(e3.getMessage());
+					}
+				}
+			}catch (IOException e) {
+				System.out.println("No se ha podido abrir la agenda de contactos");
+				System.out.println(e.getMessage());
+				return;
+			}
+		}
+		
+		
+		//cdao.loadCar(buffer.readObject());
+		//System.out.println(buffer.readObject());
+		Boolean continua = true;
+		while (continua == true) {
+			System.out.println("1. Añadir nuevo coche\n" + "2. Borrar coche por id\n"
+					+ "3. Consulta coche por id\n" + "4. Listado de coches\n"
+					+ "5. Exportar coches a archivo CSV\n" + "6. Terminar el programa\n" );
+			Scanner sc = new Scanner(System.in);
+			String opcion = nextLine();
+			if(opcion.equals("1")) {//Añadir coche
+				Coche cAux = new Coche();
+				
+				System.out.println("======ID======");
+				cAux.setId(Integer.parseInt(nextLine()));
+				System.out.println("======Numero de matricula======");
+				cAux.setMatricula(nextLine());
+				System.out.println("======Marca======");
+				cAux.setMarca(nextLine());
+				System.out.println("======Modelo======");
+				cAux.setModelo(nextLine());
+				System.out.println("======Color======");
+				cAux.setColor(nextLine());
+				
+				System.out.println();
+				if (cdao.newCar(cAux) == 1) {//en caso de que no se cree
+					System.out.println("No se pudo crear ya que hay un coche "
+										+ "con el mismo id/matricula\n");
+				}else
+					System.out.println("Creado con exito " + cAux);
+			}
+			if(opcion.equals("2")) {//Borrar coche
+				System.out.println("======Inserte el ID======");
+				if(cdao.deleteCar(Integer.parseInt(nextLine())) == true) {
+					System.out.println("Se borro exitosamente\n");
+				}else
+					System.out.println("No se pudo borrar el coche\n");
+			}
+			if(opcion.equals("3")) {//Buscar coche
+				System.out.println("======Inserta el ID======");
+				System.out.println(cdao.findById(Integer.parseInt(nextLine())));
+			}
+			if(opcion.equals("4")) {//Listar coche
+				cdao.listCar();
+			}
+			if(opcion.equals("5")) {//Exportar a .csv
+				exportar(castArrayToList(cdao.listOb()));
+				
+				//System.out.print();
+			}
+			if(opcion.equals("6")) {//terminamos la ejecucion del programa y exportamos datos a .dat
+				System.out.println("Vuelva pronto");
+				sc.close();
+				try(FileOutputStream file = new FileOutputStream(NOMBRE_FICHERO);//asi estariamos sobreescribiendo el contenido
+						ObjectOutputStream buffer = new ObjectOutputStream(file)){
+					for (Coche c : cdao.listOb()) {
+						buffer.writeObject(c);
+					}
+				}catch (IOException e){
+					System.out.println("No se pudo abrir el fichero");
+					System.out.println(e.getMessage());
+					return;
+				}
+				continua = false;
+			}
+			
+		}
+	}
+	
+
+	/*private static void crearCSV(ArrayList<Coche> coches) {
+	    try (PrintWriter writer = new PrintWriter(new File("coches.csv"))) {
+	      StringBuilder sb = new StringBuilder();
+	      sb.append("id,matricula,marca,modelo,color");
+	      sb.append(System.lineSeparator());
+	      for (Coche coche : coches) {
+	        sb.append(coche.getId());
+	        sb.append(",");//, dato por celda   ; objeto en toda la celda
+	        sb.append(coche.getMatricula());
+	        sb.append(",");
+	        sb.append(coche.getMarca());
+	        sb.append(",");
+	        sb.append(coche.getModelo());
+	        sb.append(",");
+	        sb.append(coche.getColor());
+	        sb.append(System.lineSeparator());
+	      }
+	      writer.write(sb.toString());
+	      System.out.println("Archivo 'coches.csv' ha sido creado con exito");
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
+
+	  }*/
+	
+    public static List<Coche> castArrayToList(ArrayList<Coche> lista){
+        List<Coche> resultado = new ArrayList<>();
+        for (Coche coche : lista){
+            resultado.add(coche);
+        }
+        return resultado;
+    }
+	
+	public static void exportar(List<Coche> carList) {
+		String nombreArchivo = "agenda.csv";
+		Boolean file = new File(nombreArchivo).exists();
+		
+//		List<Object> resultado = new ArrayList<>();
+//        for (Object object : lista){
+//            resultado.add(object);
+//        }
+		
+		if(file){//si existe lo borramos
+			File fl = new File(nombreArchivo);
+            fl.delete();
+		}
+		
+		//if(carList != null) {
+			//creamos el archivo
+			try {
+				//CsvWriter csvFile = new CsvWriter(new FileWriter(nombreArchivo, true), ',');
+				CsvWriter csvFile = new CsvWriter(new FileWriter(nombreArchivo, true), ',');
+				//nombre de las columnas
+				csvFile.write("ID");
+				csvFile.write("MATRICULA");
+				csvFile.write("MARCA");
+				csvFile.write("MODELO");
+				csvFile.write("COLOR");
+				csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
+				
+				//recorremos las lista de coches
+				for (Coche c : carList) {
+					csvFile.write(Integer.toString(c.getId()));
+					csvFile.write(c.getMatricula());
+					csvFile.write(c.getMarca());
+					csvFile.write(c.getModelo());
+					csvFile.write(c.getColor());
+					csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
+				}
+				csvFile.close();
+				System.out.println("Archivo exportado con exito");
+			}catch (IOException e) {
+				System.out.println("Ocurrio un problema en la exportacion");
+				e.printStackTrace();
+			}
+//		}else {
+//			System.out.println("No hay datos para exportar \n");
+		//}
+	}
+
+}
+	
+

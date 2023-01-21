@@ -1,5 +1,8 @@
 package dao;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import beans.Coche;
@@ -12,10 +15,11 @@ public class CocheDaoImpl implements IntCocheDao{
 		carList = new ArrayList<Coche>();
 	}
 	
-	/*necesito esto??
-	 * creo q no pq los coches se cargan del fichero
+	/**
+	 * los coches se cargan del fichero
 	 */
-	public void loadCar() {
+	public void loadCar(Object readObject) {
+		carList.add((Coche) readObject);
 		
 	}
 	
@@ -45,9 +49,10 @@ public class CocheDaoImpl implements IntCocheDao{
 	@Override
 	public Boolean deleteCar(int id) {
 		for (Coche c : carList) {
-			if(c.getId() == id)
+			if(c.getId() == id) {
 				carList.remove(c);
 				return true;
+			}
 		}
 		return false;
 	}
@@ -89,4 +94,48 @@ public class CocheDaoImpl implements IntCocheDao{
 	}
 	
 	
+	
+	/**
+	 * Metodo que nos permite exportar el array list a un csv
+	 */
+/*	public void exportar() {
+		String nombreArchivo = "agenda.csv";
+		Boolean file = new File(nombreArchivo).exists();
+		
+		if(file){//si existe lo borramos
+			File fl = new File(nombreArchivo);
+            fl.delete();
+		}
+		
+		//if(carList != null) {
+			//creamos el archivo
+			try {
+				CsvWriter csvFile = new CsvWriter(new FileWriter(nombreArchivo), ',');
+				//nombre de las columnas
+				csvFile.write("ID");
+				csvFile.write("MATRICULA");
+				csvFile.write("MARCA");
+				csvFile.write("MODELO");
+				csvFile.write("COLOR");
+				csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
+				
+				//recorremos las lista de coches
+				for (Coche c : carList) {
+					csvFile.write(Integer.toString(c.getId()));
+					csvFile.write(c.getMatricula());
+					csvFile.write(c.getMarca());
+					csvFile.write(c.getModelo());
+					csvFile.write(c.getColor());
+					csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
+				}
+				csvFile.close();
+				System.out.println("Archivo exportado con exito");
+			}catch (IOException e) {
+				System.out.println("Ocurrio un problema en la exportacion");
+				e.printStackTrace();
+			}
+//		}else {
+//			System.out.println("No hay datos para exportar \n");
+		//}
+	}*/
 }

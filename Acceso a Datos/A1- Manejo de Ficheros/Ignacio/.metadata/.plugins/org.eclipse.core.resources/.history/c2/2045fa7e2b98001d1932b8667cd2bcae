@@ -1,0 +1,7 @@
+package beans;
+
+public class materia {
+	
+	int id;
+	String nombre;
+}
