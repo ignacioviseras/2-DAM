@@ -1,8 +1,5 @@
 package dao;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import beans.Coche;
@@ -93,49 +90,4 @@ public class CocheDaoImpl implements IntCocheDao{
 		return carList;
 	}
 	
-	
-	
-	/**
-	 * Metodo que nos permite exportar el array list a un csv
-	 */
-/*	public void exportar() {
-		String nombreArchivo = "agenda.csv";
-		Boolean file = new File(nombreArchivo).exists();
-		
-		if(file){//si existe lo borramos
-			File fl = new File(nombreArchivo);
-            fl.delete();
-		}
-		
-		//if(carList != null) {
-			//creamos el archivo
-			try {
-				CsvWriter csvFile = new CsvWriter(new FileWriter(nombreArchivo), ',');
-				//nombre de las columnas
-				csvFile.write("ID");
-				csvFile.write("MATRICULA");
-				csvFile.write("MARCA");
-				csvFile.write("MODELO");
-				csvFile.write("COLOR");
-				csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
-				
-				//recorremos las lista de coches
-				for (Coche c : carList) {
-					csvFile.write(Integer.toString(c.getId()));
-					csvFile.write(c.getMatricula());
-					csvFile.write(c.getMarca());
-					csvFile.write(c.getModelo());
-					csvFile.write(c.getColor());
-					csvFile.endRecord();//deja de escribir (lo cual pasaria a la siguiente linea creo)
-				}
-				csvFile.close();
-				System.out.println("Archivo exportado con exito");
-			}catch (IOException e) {
-				System.out.println("Ocurrio un problema en la exportacion");
-				e.printStackTrace();
-			}
-//		}else {
-//			System.out.println("No hay datos para exportar \n");
-		//}
-	}*/
 }
