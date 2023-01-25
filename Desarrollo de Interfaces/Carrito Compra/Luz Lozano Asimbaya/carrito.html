@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Carro de la compra</title>
+    <script src="carrito.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="carrito.css" />
+</head>
+<body>
+    <div id="carrito">
+        <form id= "form" action="/my-handling-form-page" method="post">
+
+            Nombre artículo: <input type="text" id="name" /><br></br>
+            Precio artículo: <input type="text" id="price"/><br></br>
+            Unidades: <input type="number" id="unit" min="1"/><br></br>
+            <input type="button" value="Añadir al carrito" id ="boton"/><br></br>
+
+            Articulos en el carrito: <input type="text" id="articulos"/><br></br>
+            Precio total del carrito: <input type="text" id="precioTotal"/><br></br>
+
+            Forma de pago: <select id="formaPago">
+                                <option value="seleccione">---Seleccione---</option>
+                                <option value="tarjeta">Tarjeta</option>
+                                <option value="efectivo">Efectivo</option>
+                            </select><br></br>
+                            
+            <div>
+            <br><br/>
+            <label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>
+
+            <input type="button" id="imprimir" value="Imprimir"><br></br>
+            <input type="button" id="restablecer" value="Restablecer"><br></br>
+            </div>
+            
+        </form>
+  </body>
+</html>

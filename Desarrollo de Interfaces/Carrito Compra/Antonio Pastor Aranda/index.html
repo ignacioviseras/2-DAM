@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./JS/formulario.js"></script>
+    <link rel="stylesheet" type="text/css" href="./CSS/formulario.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/reset.css">
+</head>
+<body>
+
+    <header class="header">
+        
+    </header>
+
+    <form  class="form" id="form">
+        
+        <div class="main">
+    
+            <div class="nombre">
+                <label for="nombre">Nombre articulo: </label>
+                <input type="text" id="nombre"name="nombre"> <span id="mensajeNombre"></span>
+            </div>
+    
+            <div class="precio">
+                <label for="precio">Precio articulo:</label>
+                <input type="number" id="precio" name="precio" step="0.01">
+            </div>
+            <div class="unidades">
+                <label for="unidades">Unidades:</label>
+                <input type="number" id="unidades" name="unidades">
+            </div>
+            <div class="submit">
+                <button type="button" id= "botonArticulos" name="submit" >Añadir al carrito</button>
+            </div>
+    
+            <div class="articulos">
+                <label for="articulos">Articulos en el carrito:</label>
+                <output id="articulos" name="articulos">
+            </div>
+    
+            <div class="precioT">
+                <label for="precioT">Precio total del carrito: </label>
+                <output id="precioT" name="precioT">
+            </div>
+            
+            <div class="pago">
+                <label for="pago">Formas de pago:</label>
+                <select for="pago" name="pago" onchange="ocultarTarjeta()">
+                    <option value="Tarjeta" id="tarjeta">Tarjeta</option>
+<<<<<<< HEAD
+                    <option value="Efectivo" id="efectivo" selected>Efectivo</option>
+=======
+                    <option value="Efectivo" id="efectivo">Efectivo</option>
+>>>>>>> c727f5a39763a7f8d0df8b31edb7242b74196911
+                </select>
+            </div>
+             
+            <div id="datosTarjeta">
+                <input type="text" placeholder="numeroTarjeta" id="numeroTarjeta">
+                <input type="text" placeholder="nombreTitular" id="nombreTitular">
+                <input type="text" placeholder="MM/YY" id="caducidad">
+                <input type="text" placeholder="CVC" id="cvc">
+                <button type="button">Pagar</button>
+            </div>
+
+            
+            <div class="importe" id="importeT">
+                <label for="importe">Importe a pagar en efectivo: </label>
+                <output id="importe" name="importe">
+            </div>
+
+            <div class="condiciones">
+                <div class="acepto">
+                    <label for="acepto">Acepto las condiciones de compra</label>
+                    <input type="checkbox" id="acepto">
+                </div>
+                
+                <div class="imprimir">
+                    <button type="button" name="imprimir"  id="imprimir" disabled >Imprimir</button>
+
+                </div>
+            </div>
+            <div class="restablecer">
+                <button type="button" id="restablecer" name="restablecer" onclick="limpiarFormulario()" value="LimpiarFormulario">Restablecer</button>
+            </div>
+    
+    
+        </div>
+        
+    </form>
+    
+    <footer class="footer">
+
+    </footer>
+</body>
+
+
+</html>
