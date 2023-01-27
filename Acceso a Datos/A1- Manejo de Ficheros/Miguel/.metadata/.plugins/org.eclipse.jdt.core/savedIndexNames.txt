@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\Users\crono\OneDrive\Escritorio\tfgt\.metadata\.plugins\org.eclipse.jdt.core
-1759137856.index
-1865797976.index

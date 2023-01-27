@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;nOpcion&apos; in &apos;com.proyect.cliente.Application.run(...)&apos; to &apos;option&apos;&#x0D;&#x0A;- Original project: &apos;AL2-ServicioRest-Cliente&apos;&#x0D;&#x0A;- Original element: &apos;com.proyect.cliente.Application.run(String...).nOpcion&apos;&#x0D;&#x0A;- Renamed element: &apos;nOpcion&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;nOpcion&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.proyect.cliente{Application.java[Application~run~\[QString;@nOpcion!1872!1899!1879!1885!QString;!0!false" name="option" references="true" stamp="1669041453355" version="1.0"/>
+</session>

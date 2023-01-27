@@ -1,0 +1,101 @@
+package com.proyect.rest.daos;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.stereotype.Component;
+
+
+import com.proyect.rest.beans.Game;
+
+
+@Component
+public class GameDaoImpl implements IntGameDao{
+	
+	
+	private List<Game> list;
+	private int id = 0;
+	
+	
+	public GameDaoImpl() {
+		 list = new ArrayList<Game>();
+		 loadingGameList();
+	}
+
+	private void loadingGameList(){
+		list.add(new Game(id++,"call of duty", "univision", 11.0));
+		list.add(new Game(id++,"sims", "univision2", 12.0));
+		list.add(new Game(id++,"warcraft", "univision3", 13.0));
+		list.add(new Game(id++,"age of empires II", "univision4", 14.0));
+		list.add(new Game(id++,"minecraft", "univision5", 15.0));
+	}
+
+	
+	@Override
+	public List<Game> findAll() {
+		return list;
+	}
+
+	@Override
+	public Game newGame(Game g) {
+		for(Game game : list)
+		{
+			if(!(game.getName().equals(g.getName()))) {
+				g.setId(id++);
+				list.add(g);
+				return g;
+			}
+		}
+		return null;
+	}
+	
+	
+	@Override
+	public Game deleteGame(int id) {ç
+		Game returns;
+		try {
+			for(Game game : list) {
+				if (game.getId() == id) list.remove(id);
+				
+				if (game.getId() > id) {
+					Game aux = list.get(game.getId());
+					
+					 = list.remove(game.getId());
+					list.add(aux.getId()-1, aux);
+				}
+			}
+			return returns;
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("delete -> Persona fuera de rango");
+			return null;
+		}
+	}
+
+	@Override
+	public Game modifyGame(Game g) {
+		try {
+			Game aux = list.get(g.getId());
+			for(Game game : list){
+				if(!(game.getName().equals(g.getName()))) {
+					aux.setName(g.getName());
+					aux.setCompany(g.getCompany());
+					aux.setScore(g.getScore());
+					return aux;
+				}
+			}
+			return null;		
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("No se pudo añadir");
+			return null;
+		}
+	}
+
+	@Override
+	public Game findById(int posicion) {
+		try {
+			return list.get(posicion);
+		} catch (IndexOutOfBoundsException iobe) {
+			System.out.println("No existe el juego");
+			return null;
+		}
+	}
+}

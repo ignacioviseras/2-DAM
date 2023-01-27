@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\nin\Documents\GitHub\2-DAM\Programacion de Servicios y Procesos\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4215117467.index
+819148163.index
+2283905365.index
+114969440.index
+262142283.index
+1206070739.index
+4184645706.index

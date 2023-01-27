@@ -1,0 +1,184 @@
+package com.proyect.cliente;
+
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+import com.proyect.cliente.beans.Game;
+import com.proyect.cliente.service.ServiceProxyGame;
+import com.proyect.cliente.service.ServiceProxyMensaje;
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+
+	@Autowired
+	private ServiceProxyGame spg;
+
+	@Autowired
+	private ServiceProxyMensaje spm;
+
+	@Autowired
+	private ApplicationContext context;
+	
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+	
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public String nextLine() {
+		return scanner.nextLine();
+	}
+	
+	
+	
+	// arrancamos la aplicacion
+	@Override
+	public void run(String... args) throws Exception {
+
+		System.out.println(spm.obtenerCadena("inicio"));
+		System.out.println("===========Iniciando Cliente Rest============");
+		System.out.println("1. Dar de alta un videojuego" + "\n" + "2. Dar de baja un videojuego por ID" + "\n"
+				+ "3. Modificar un videojuego por ID" + "\n" + "4. Obtener un videojuego por ID" + "\n"
+				+ "5. Listar todos los videojuegos" + "\n" + "6. Salir");
+
+		Boolean isRun = true;
+		while (isRun == true) {
+		
+			String option = nextLine();
+	
+			// -----Alta-----
+			if (option.equals("1")) {
+
+				Game game = new Game();
+
+				// String mensaje = spm.obtenerCadena("newGame");
+				System.out.println("***Introducir el id***");
+				String id = scanner.nextLine();
+				game.setId(Integer.parseInt(id));
+				System.out.println("***Introducir el nombre***");
+				String name = scanner.nextLine();
+				game.setName(name);
+				System.out.println("***Introducir la Compañia***");
+				String company = scanner.nextLine();
+				game.setCompany(company);
+				System.out.println("***Introducir la nota***");
+				String score = scanner.nextLine();
+				game.setScore(Double.parseDouble(score));
+				Game gNuevo = spg.newGame(game);
+				
+				System.out.println("Persona Alta: " + gNuevo);
+				System.out.println("");
+
+			}
+			
+			
+			// -----Borrar-----
+			if (option.equals("2")) {
+
+	
+				System.out.println("***Introducir el id***");
+				String id = scanner.nextLine();
+				
+				Boolean gBorrar = spg.deleteGame(Integer.parseInt(id));
+				System.out.println("Persona eliminada: " + gBorrar + "\n");
+		
+
+			}
+			
+			
+			
+			// -----Modificar-----
+			if (option.equals("3")) {
+				
+			
+				System.out.println("***Introducir el id del juego a modificar***");
+				String id = scanner.nextLine();
+				
+				Game gamemodif = new Game();
+				
+				gamemodif = spg.findById(Integer.parseInt(id));
+				gamemodif.setId(Integer.parseInt(id));
+				System.out.println("***Introducir un nuevo nombre***");
+				String name = scanner.nextLine();
+				if (name.equals(""))
+					gamemodif.getName();
+				gamemodif.setName(name);
+
+				System.out.println("***Introducir la Compañia***");
+				String company = scanner.nextLine();
+				
+				if (company.equals(""))
+					gamemodif.getCompany();
+				gamemodif.setCompany(company);
+
+				System.out.println("***Introducir la nota***");
+				String score = scanner.nextLine();
+				
+				if (score.equals(""))
+					gamemodif.getScore();
+				gamemodif.setScore(Double.parseDouble(score));
+
+				Boolean gmodificar = spg.modifyGame(gamemodif);
+				System.out.println("Persona Modificada: " + gmodificar + "\n");
+		
+				
+			}
+			
+			
+			
+			
+			// -----Listar uno-----
+			if (option.equals("4")) {
+				
+
+				System.out.println("***Introducir el id***");
+				String id = scanner.nextLine();
+				
+				Game gBuscarUno = spg.findById(Integer.parseInt(id));
+				System.out.println("Solicitada: " + gBuscarUno + "\n");
+				
+			}
+			
+			
+			
+			// -----Listar todos-----
+			if (option.equals("5")) {
+				
+				System.out.println("******Los juegos que tenemos son******");
+				List<Game> listGame = spg.findAll();
+				
+				listGame.forEach((pos) -> System.out.println(pos));
+				System.out.println("");
+				
+			}
+			
+			
+			
+			// -----Salir-----
+			if (option.equals("6")) {
+				isRun = false;
+			}
+
+		}
+		
+		scanner.close();
+		SpringApplication.exit(context, () -> 0);
+		System.out.println("=====Programa cerrado=====");
+	}
+}
