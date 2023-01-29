@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/nombreTarea"
+        android:layout_width="236dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="31dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botonTarea"
+        android:layout_width="28dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="26dp"
+        android:backgroundTint="@color/morado"
+        android:drawableTint="#FFFFFF"
+        android:onClick="borrarTarea"
+        android:padding="7dp"
+        android:textAlignment="textStart"
+        app:icon="@mipmap/delete"
+        app:iconSize="15dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botonModificar"
+        android:layout_width="28dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/morado"
+        android:drawableTint="#FFFFFF"
+        android:onClick="actualizarTarea"
+        android:padding="7dp"
+        android:textAlignment="textStart"
+        app:icon="@mipmap/edit"
+        app:iconSize="15dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/botonTarea"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:text="____________________________________________________"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
