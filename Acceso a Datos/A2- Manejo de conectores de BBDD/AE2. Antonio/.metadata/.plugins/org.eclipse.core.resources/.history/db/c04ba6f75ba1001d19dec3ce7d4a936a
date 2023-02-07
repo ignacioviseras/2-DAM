@@ -1,0 +1,5 @@
+package es.edix.modelo.persistencia;
+
+public class SqlDaoImpl {
+
+}

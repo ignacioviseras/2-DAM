@@ -1,0 +1,138 @@
+package es.edix.modelo.persistencia;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import es.edix.modelo.dao.IntCocheDao;
+import es.edix.modelo.entidad.Coche;
+
+
+public class SqlDaoImpl implements IntCocheDao{
+	
+	//Primero realizaremos los metodos de abrir y cerrar la base de datos:
+	
+	
+	private Connection conexion;
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public static String nextLine() {
+		return scanner.nextLine();
+		
+	}	
+	
+		public boolean abrirConexion() {
+			String cadenaConexion = "jdbc:mysql://localhost:3306/bbdd";
+			String user= "root";
+			String pass= "";
+			
+			try {
+				conexion=DriverManager.getConnection(cadenaConexion, user, pass);
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+			return true;
+			
+			
+		}
+		
+		public boolean cerrarConexion() {
+			
+			
+			try {
+				conexion.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+			return true;
+			
+		}
+	
+		//creamos un main con el menu:
+		
+		public static void main(String[] args) {
+			System.out.println("===========Iniciando Aplicacion============");
+			Boolean continua = true;
+			while (continua == true) {
+				System.out.println("1. Añadir nuevo coche\n" + "2. Borrar coche por id\n"
+						+ "3. Consulta coche por id\n" + "4. Listado de coches\n"
+						+ "5. Exportar coches a archivo CSV\n" + "6. Terminar el programa\n" );
+				String opcion = nextLine();
+				if(opcion.equals("1")) {//Añadir coche
+					
+				}else if(opcion.equals("2")) {//Borrar coche
+					
+				}else if(opcion.equals("3")) {//Buscar coche
+					
+				}else if(opcion.equals("4")) {//Listar coche
+					
+				}else if(opcion.equals("5")) {//Exportar a .csv
+					
+				}else if(opcion.equals("6")) {//terminamos la ejecucion del programa y exportamos datos a .dat
+					
+					continua = false;
+				}
+				
+			}
+		}
+		
+		
+		public int newCar(Coche coche) {
+			
+			
+			String query = "insert into coche (MATRICULA, MARCA,MODELO,COLOR) values (?,?,?,?)";
+			
+			try {
+				PreparedStatement ps = conexion.prepareStatement(query);
+				ps.setString(1, coche.getMatricula());
+				ps.setString(1, coche.getMarca());
+				ps.setString(1, coche.getModelo());
+				ps.setString(1, coche.getColor());
+				
+				int afectados = ps.executeUpdate();
+				
+				
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return 0;
+			}
+			return 1;
+			
+			
+			
+		}
+
+		public Boolean deleteCar(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Coche findById(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void listCar() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public ArrayList<Coche> listOb() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		
+
+	
+	
+
+	
+}

@@ -1,0 +1,88 @@
+package es.edix.modelo.persistencia;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import es.edix.modelo.dao.IntCocheDao;
+import es.edix.modelo.entidad.Coche;
+
+
+public class SqlDaoImpl implements IntCocheDao{
+	
+	//Primero realizaremos la conexión a la base de datos:
+	
+	
+	private Connection conexion;
+	
+	
+		public boolean abrirConexion() {
+			String cadenaConexion = "jdbc:mysql://localhost:3306/bbdd";
+			String user= "root";
+			String pass= "";
+			
+			try {
+				conexion=DriverManager.getConnection(cadenaConexion, user, pass);
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+			return true;
+			
+			
+		}
+		
+		public boolean cerrarConexion() {
+			
+			
+			try {
+				conexion.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+			return true;
+			
+		}
+	
+		
+		public int newCar(Coche coche) {
+			
+			 return 0;
+			
+			
+		}
+
+		public Boolean deleteCar(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Coche findById(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void listCar() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public ArrayList<Coche> listOb() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public int newCar(Coche coche) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+	
+	
+
+	
+}

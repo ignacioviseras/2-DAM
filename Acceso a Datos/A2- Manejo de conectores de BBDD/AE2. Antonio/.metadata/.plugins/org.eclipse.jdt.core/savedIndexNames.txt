@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\Users\antop\Desktop\AE2. Antonio\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+745110830.index
+210270057.index
+1755345563.index
+952756887.index
+262142283.index
+4184645706.index
+1805866583.index
