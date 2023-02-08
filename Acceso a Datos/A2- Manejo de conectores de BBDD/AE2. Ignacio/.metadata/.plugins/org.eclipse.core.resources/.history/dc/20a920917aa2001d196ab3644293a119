@@ -1,0 +1,11 @@
+package es.edix.modelo.entidad;
+
+public class Pasajero {
+	
+	int id;
+	String nombre;
+	int edad;
+	double peso;
+	
+
+}

@@ -1,0 +1,121 @@
+package es.edix.modelo.persistencia;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import es.edix.modelo.dao.IntPasajeroDao;
+import es.edix.modelo.entidad.Coche;
+import es.edix.modelo.entidad.Pasajero;
+
+public class SqlDaoPasajeroImpl implements IntPasajeroDao{
+	
+	
+	private Connection conexion;
+	
+	
+	public boolean abrirConexion() {
+		String cadenaConexion = "jdbc:mysql://localhost:3306/bbdd";
+		String user= "root";
+		String pass= "";
+		
+		try {
+			conexion=DriverManager.getConnection(cadenaConexion, user, pass);
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+		
+		
+	}
+	
+	public boolean cerrarConexion() {
+		
+		
+		try {
+			conexion.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+		
+	}
+
+
+	public Boolean deletePassenger(int id) {
+		abrirConexion();
+		String query = "delete from pasajero where ID = ?";
+		try {
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setInt(1,id);
+			
+			int afectado= ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error al eliminar el pasajero con id: "+ id );
+			e.printStackTrace();
+			return false;
+		}finally {
+			cerrarConexion();
+		}
+		return true;
+	}
+
+	public Pasajero findById(int id) {
+		abrirConexion();
+		String query = "select ID, NOMBRE,EDAD, PESO from pasajero where ID=?";
+		Pasajero pa= null;
+		try {
+			PreparedStatement ps = conexion.prepareStatement(query);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				pa = new Pasajero();
+				pa.setId(1);
+				pa.setNombre(2);
+				pa.setEdad(3);
+				pa.getPeso(4);
+				
+			}
+			
+			
+			
+			
+		}catch (SQLException e) {
+			System.out.println("Error al buscar el coche con id: "+ id );
+			e.printStackTrace();
+			
+		}finally {
+			cerrarConexion();
+		}
+		return coche;
+	}
+
+	public ArrayList<Pasajero> passengerList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Boolean addPassenger(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Boolean deleteCarPassenger(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Pasajero> passengerCarList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
