@@ -9,7 +9,6 @@ import es.edix.modelo.persistencia.SqlDaoPasajeroImpl;
 
 public class CocheController {
 	
-	public static int scaux;
 	public static SqlDaoImpl cocheDao = new SqlDaoImpl();
 	public static final Scanner scanner = new Scanner(System.in);
 	public static SqlDaoPasajeroImpl paDao= new SqlDaoPasajeroImpl();
@@ -48,12 +47,6 @@ public class CocheController {
 				
 				
 			}else if(opcion.equals("6")) {
-				System.out.println("-----------Escribe el ID del coche a gestionar pasajeros: ----------");
-				System.out.println(cocheDao.listOb());
-				scaux = Integer.parseInt(nextLine());	
-				if (cocheDao.findById(scaux) != null) {
-					
-					System.out.println(cocheDao.findById(scaux)+ "\n");
 
 					Boolean exitSub = true;
 					while (exitSub == true) {
@@ -66,10 +59,10 @@ public class CocheController {
 							ftAddPas();
 														
 						}else if(opas.equals("9")) {//Borrar pasajero por id
-							ftDeleteById();							
+							ftDeletePasById();							
 							
-						}else if(opas.equals("10")) {//Buscar coche
-							ftFindCarById();
+						}else if(opas.equals("10")) {//Buscar pasajero
+							ftFindPasById();
 							
 						}else if(opas.equals("11")) {//Listar pasajeros
 							ftListPas();       
@@ -88,10 +81,7 @@ public class CocheController {
 							ftExitMenuPas();
 						}
 					}
-						
-				}else {
-					System.out.println("Inserte un coche que exista");
-				}
+				
 				
 			}else if(opcion.equals("7")) {//terminamos la ejecucion del programa 
 				
@@ -119,18 +109,17 @@ public class CocheController {
 	public static void ftDeleteCarById() {
 		System.out.println("-----------Escribe el ID del coche a borrar: ----------");
 		int scaux = Integer.parseInt(nextLine());											
-		System.out.println(cocheDao.deleteCar(scaux)+ "\n");
+		cocheDao.deleteCar(scaux);
 	}
 	
 	public static void ftFindCarById() {
 		System.out.println("-----------Escribe el ID del coche a buscar: ----------");
-		int scaux = Integer.parseInt(nextLine());											
-		System.out.println(cocheDao.findById(scaux)+ "\n");
+		System.out.println(cocheDao.findById(Integer.parseInt(nextLine()))+ "\n");
 	}
 	
 	public static void ftListCar() {
 		System.out.println("----------Lista de coches completa: ----------");
-		System.out.println(cocheDao.listOb()+ "\n");
+		cocheDao.listOb();
 	}
 	
 	public static void ftModifyCar() {
@@ -146,7 +135,7 @@ public class CocheController {
 		System.out.println("-----------Escribe el modelo: ----------");
 		cocheaux.setModelo(nextLine());
 		
-		System.out.println(cocheDao.modifyCar(cocheaux)+ "\n");
+		cocheDao.modifyCar(cocheaux);
 	}
 	
 	public static void ftAddPas() {
@@ -159,33 +148,30 @@ public class CocheController {
 		System.out.println("-----------Escribe el peso: ----------");
 		Double sp = Double.parseDouble(nextLine());
 		p.setPeso(sp);
-		p.setIdCoche(scaux);
 		
 		paDao.addPassenger(p);
 	}
 	
-	public static void ftDeleteById() {
+	public static void ftDeletePasById() {
 		System.out.println("-----------Escribe el ID del pasajero a borrar: ----------");
-		int opas1 = Integer.parseInt(nextLine());											
-		System.out.println(paDao.deletePassenger(opas1)+ "\n");
+		paDao.deletePassenger(Integer.parseInt(nextLine()));
 	}
 	
 	public static void ftFindPasById() {
 		System.out.println("-----------Escribe el ID del pasajero a buscar: ----------");
-		int opas2 = Integer.parseInt(nextLine());											
-		System.out.println(paDao.findById(opas2)+ "\n");
+		System.out.println(paDao.findById(Integer.parseInt(nextLine()))+ "\n");
 	}
 	
 	public static void ftListPas() {
 		System.out.println("----------Lista de pasajeros completa: ----------");
-		System.out.println(paDao.passengerList()+ "\n");
+		paDao.passengerList();
 	}
 	
 	public static void ftAddPasInCar() {
-		System.out.println(cocheDao.listOb());
+		cocheDao.listOb();
 		System.out.println("---------- ID del coche  ----------");
 		int idCoche = Integer.parseInt(nextLine());
-		System.out.println(paDao.passengerList());
+		paDao.passengerList();
 		System.out.println("---------- ID del pasajero  ----------");
 		int idPasaj = Integer.parseInt(nextLine());
 		paDao.setCar(idPasaj, idCoche);
@@ -193,11 +179,11 @@ public class CocheController {
 	
 	public static void ftListOfPasInCar() {
 		System.out.println("---------- ID del coche  ----------");
-		System.out.println(paDao.passengerCarList(Integer.parseInt(nextLine())));
+		paDao.passengerCarList(Integer.parseInt(nextLine()));
 	}
 	
 	public static void ftDeletePasOfCar() {
-		System.out.println(cocheDao.listOb());							
+		paDao.passengerList();
 		System.out.println("---------- ID del pasajero  ----------");
 		paDao.deleteCarPassenger(Integer.parseInt(nextLine()));
 	}

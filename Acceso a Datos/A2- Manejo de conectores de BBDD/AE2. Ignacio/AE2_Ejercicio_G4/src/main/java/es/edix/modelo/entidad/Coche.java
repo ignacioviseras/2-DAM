@@ -36,7 +36,7 @@ public class Coche {
 	@Override
 	public String toString() {
 		return "id=" + id + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", color="
-				+ color + "\n";
+				+ color ;
 	}
 
 	@Override

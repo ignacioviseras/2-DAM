@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import es.edix.modelo.dao.IntPasajeroDao;
 import es.edix.modelo.entidad.Pasajero;
 
@@ -48,9 +46,9 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 	}
 
 
-	public Boolean deletePassenger(int id) {
+	public void deletePassenger(int id) {
 		abrirConexion();
-		String query = "delete from pasajero where ID = ?";
+		String query = "delete from pasajero where ID_PASAJERO = ?";
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
 			ps.setInt(1,id);
@@ -59,16 +57,16 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		} catch (SQLException e) {
 			System.out.println("Error al eliminar el pasajero con id: "+ id );
 			e.printStackTrace();
-			return false;
+			
 		}finally {
 			cerrarConexion();
 		}
-		return true;
+		System.out.println("Pasajero borado \n");
 	}
 
 	public Pasajero findById(int id) {
 		abrirConexion();
-		String query = "select ID, NOMBRE,EDAD, PESO from pasajero where ID=?";
+		String query = "select ID_PASAJERO, NOMBRE, EDAD, PESO, ID_COCHE from pasajero where ID_PASAJERO=?";
 		Pasajero pa= null;
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -77,13 +75,12 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				pa = new Pasajero();
-				pa.setId(1);
+				pa.setId(rs.getInt(1));
 				pa.setNombre(rs.getString(2));
-				pa.setEdad(3);
+				pa.setEdad(rs.getInt(3));
 				pa.setPeso(rs.getDouble(4));
-				
+				pa.setIdCoche(rs.getInt(5));	
 			}
-			
 			
 		}catch (SQLException e) {
 			System.out.println("Error al buscar el pasajero con id: "+ id );
@@ -95,12 +92,14 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		return pa;
 	}
 
-	public ArrayList<Pasajero> passengerList() {
+	
+	
+	public void passengerList() {
 		if(!abrirConexion()) {
-			return null;	
+			System.out.println("Error al establecer conexion");
 		}
 		
-		List<Pasajero> listapasajero = new ArrayList<Pasajero>();
+		//List<Pasajero> listapasajero = new ArrayList<Pasajero>();
 		String query= "select ID_PASAJERO, NOMBRE, EDAD, PESO, ID_COCHE from pasajero";
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -116,10 +115,10 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 				pasajero.setPeso(rs.getDouble(4));
 				pasajero.setIdCoche(rs.getInt(5));
 				
-				listapasajero.add(pasajero);
+				System.out.println(pasajero);
 			}
 		
-			
+			System.out.println();
 			
 		}catch (SQLException e) {
 			System.out.println("Error al listar los pasajeros");
@@ -128,30 +127,32 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		}finally {
 			cerrarConexion();
 		}
-		return (ArrayList<Pasajero>) listapasajero;
+		
 		
 	}
+	
+	
 
-	public Boolean addPassenger(Pasajero pasajero) {
+	public void addPassenger(Pasajero pasajero) {
 		abrirConexion();
-		String query = "insert into pasajero (NOMBRE, EDAD,PESO, ID_COCHE) values (?,?,?,?)";
+		String query = "insert into pasajero (NOMBRE, EDAD, PESO, ID_COCHE) values (?,?,?,?)";
 		
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
 			ps.setString(1, pasajero.getNombre());
 			ps.setInt(2, pasajero.getEdad());
 			ps.setDouble(3, pasajero.getPeso());
-			ps.setDouble(4, pasajero.getIdCoche());
+			ps.setInt(4, 0);
 			
 			ps.executeUpdate();
+			System.out.println("Pasajero añadido \n");
 		}catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error al crear el pasajero" );
-			return false;
 		}finally {
 			cerrarConexion();
 		}
-		return true;
+		
 		
 		
 		
@@ -197,10 +198,10 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		}
 	}
 
-	public ArrayList<Pasajero> passengerCarList(int id) {
+	
+	public void passengerCarList(int id) {
 		abrirConexion();
 		
-		List<Pasajero> listapasajero = new ArrayList<Pasajero>();
 		String query = "SELECT ID_PASAJERO, NOMBRE, EDAD, PESO, ID_COCHE FROM pasajero WHERE ID_COCHE=?";
 		
 		try {
@@ -216,7 +217,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 				pasajero.setPeso(rs.getDouble(4));
 				pasajero.setIdCoche(rs.getInt(5));
 				
-				listapasajero.add(pasajero);
+				System.out.println(pasajero);
 				
 			}
 			
@@ -227,7 +228,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		finally {
 			cerrarConexion();
 		}
-		return (ArrayList<Pasajero>) listapasajero;
+		
 	}
-
+	
 }

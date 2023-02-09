@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import es.edix.modelo.dao.IntCocheDao;
 import es.edix.modelo.entidad.Coche;
 
@@ -79,7 +77,7 @@ public class SqlDaoImpl implements IntCocheDao{
 			
 		}
 
-		public Boolean deleteCar(int id) {
+		public void deleteCar(int id) {
 			abrirConexion();
 			String query = "delete from coche where ID = ?";
 			try {
@@ -90,11 +88,10 @@ public class SqlDaoImpl implements IntCocheDao{
 			} catch (SQLException e) {
 				System.out.println("Error al eliminar el coche con id: "+ id );
 				e.printStackTrace();
-				return false;
 			}finally {
 				cerrarConexion();
 			}
-			return true;
+			System.out.println("Coche borrado exitosamente \n");
 		}
 
 		public Coche  findById(int id) {
@@ -132,12 +129,11 @@ public class SqlDaoImpl implements IntCocheDao{
 
 		
 
-		public ArrayList<Coche> listOb() {
+		public void listOb() {
 			if(!abrirConexion()) {
-				return null;	
+				System.out.println("Error al conectar cn la bd");	
 			}
 			
-			List<Coche> listaCoche = new ArrayList<Coche>();
 			String query= "select ID, MATRICULA, MARCA, MODELO, COLOR from coche";
 			try {
 				PreparedStatement ps = conexion.prepareStatement(query);
@@ -153,8 +149,9 @@ public class SqlDaoImpl implements IntCocheDao{
 					coche.setModelo(rs.getString(4));
 					coche.setColor(rs.getString(5));
 					
-					listaCoche.add(coche);
+					System.out.println(coche);
 				}	
+				System.out.println();
 				
 			}catch (SQLException e) {
 				System.out.println("Error al listar los coches");
@@ -163,14 +160,12 @@ public class SqlDaoImpl implements IntCocheDao{
 			}finally {
 				cerrarConexion();
 			}
-			return (ArrayList<Coche>) listaCoche;
 			
 		}
 
-		public boolean modifyCar(Coche coche) {
+		public void modifyCar(Coche coche) {
 			abrirConexion();
 			String query = "update coche set MATRICULA=?, MARCA=?,MODELO=?,COLOR=? where ID=?";
-			boolean modificado =true;
 			try {
 				PreparedStatement ps = conexion.prepareStatement(query);
 				ps.setString(1, coche.getMatricula());
@@ -181,17 +176,17 @@ public class SqlDaoImpl implements IntCocheDao{
 				
 				int afectados = ps.executeUpdate();
 				if(afectados==0) {
-					modificado= false;
-				}else modificado=true;
+					System.out.println("No se modifico el coche \n");
+				}else {
+					System.out.println("Coche modificado \n");
+				}
 				
 			}catch (SQLException e) {
 				System.out.println("Error al modificar el coche con id: "+ coche.getId() );
 				e.printStackTrace();
-				modificado=false;
 			}finally {
 				cerrarConexion();
 			}
-			return modificado;
 			
 		}
 	
