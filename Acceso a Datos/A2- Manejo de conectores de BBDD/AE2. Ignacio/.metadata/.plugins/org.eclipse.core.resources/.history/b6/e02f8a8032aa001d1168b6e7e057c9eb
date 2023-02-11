@@ -131,6 +131,8 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		}finally {
 			cerrarConexion();
 		}
+		
+		
 	}
 	
 	
@@ -155,7 +157,11 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 			System.out.println("Error al crear el pasajero" );
 		}finally {
 			cerrarConexion();
-		}		
+		}
+		
+		
+		
+		
 	}
 
 	public void setCar(int idPasaj, int idCoche) {
@@ -234,6 +240,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		finally {
 			cerrarConexion();
 		}
+		
 	}
 	
 }

@@ -72,7 +72,9 @@ public class SqlDaoImpl implements IntCocheDao{
 			}finally {
 				cerrarConexion();
 			}
-			return 1;			
+			return 1;
+			
+			
 			
 		}
 
@@ -95,7 +97,7 @@ public class SqlDaoImpl implements IntCocheDao{
 			System.out.println("Coche borrado exitosamente \n");
 		}
 
-		public Coche findById(int id) {
+		public Coche  findById(int id) {
 			if(!abrirConexion()) {
 				System.out.println("Error al conectar cn la bd");	
 			}
@@ -113,7 +115,10 @@ public class SqlDaoImpl implements IntCocheDao{
 					coche.setMarca(rs.getString(3));
 					coche.setModelo(rs.getString(4));
 					coche.setColor(rs.getString(5));
-				}			
+				}
+				
+				
+				
 				
 			}catch (SQLException e) {
 				System.out.println("Error al buscar el coche con id: "+ id );
@@ -122,7 +127,9 @@ public class SqlDaoImpl implements IntCocheDao{
 			}finally {
 				cerrarConexion();
 			}
-			return coche;			
+			return coche;
+			
+			
 		}
 
 		
@@ -135,8 +142,9 @@ public class SqlDaoImpl implements IntCocheDao{
 			String query= "select ID, MATRICULA, MARCA, MODELO, COLOR from coche";
 			try {
 				PreparedStatement ps = conexion.prepareStatement(query);
-				ResultSet rs = ps.executeQuery();
 				
+				
+				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					
 					Coche coche = new Coche();

@@ -1609,3 +1609,49 @@
 2023-02-09 17:46:51,824 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
 2023-02-09 17:46:51,825 [Worker-63: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2023-02-09 17:46:51,825 [Worker-63: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 16:47:57,017 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-02-11 17:26:02,792 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact mysql:mysql-connector-java:jar:8.0.32 has been relocated to com.mysql:mysql-connector-j:jar:8.0.32: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+2023-02-11 17:26:03,826 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:03,827 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:26:03,829 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:03,830 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:26:05,909 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:05,909 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:26:05,911 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:05,911 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:26:10,021 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:10,022 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:26:10,023 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:10,023 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:26:22,121 [Worker-30: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:22,122 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:26:22,123 [Worker-30: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:22,124 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:26:32,181 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:32,182 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:26:32,183 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:26:32,184 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:46:01,124 [Worker-33: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:46:01,125 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:46:01,126 [Worker-33: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:46:01,126 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 17:53:26,264 [Worker-34: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:53:26,265 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 17:53:26,266 [Worker-34: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 17:53:26,266 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 18:28:21,371 [Worker-39: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:28:21,372 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 18:28:21,373 [Worker-39: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:28:21,373 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 18:35:40,162 [Worker-40: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:35:40,163 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 18:35:40,164 [Worker-40: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:35:40,164 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 18:53:49,419 [Worker-46: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:53:49,420 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 18:53:49,421 [Worker-46: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 18:53:49,421 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources
+2023-02-11 19:23:16,514 [Worker-35: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 19:23:16,515 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\main\resources
+2023-02-11 19:23:16,516 [Worker-35: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-02-11 19:23:16,516 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\3ocul\Desktop\AE2. Ignacio\AE2_Ejercicio_G4\src\test\resources

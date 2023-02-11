@@ -95,7 +95,7 @@ public class SqlDaoImpl implements IntCocheDao{
 			System.out.println("Coche borrado exitosamente \n");
 		}
 
-		public Coche findById(int id) {
+		public Coche  findById(int id) {
 			if(!abrirConexion()) {
 				System.out.println("Error al conectar cn la bd");	
 			}
@@ -135,8 +135,9 @@ public class SqlDaoImpl implements IntCocheDao{
 			String query= "select ID, MATRICULA, MARCA, MODELO, COLOR from coche";
 			try {
 				PreparedStatement ps = conexion.prepareStatement(query);
-				ResultSet rs = ps.executeQuery();
 				
+				
+				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					
 					Coche coche = new Coche();

@@ -47,9 +47,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 
 
 	public void deletePassenger(int id) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		String query = "delete from pasajero where ID_PASAJERO = ?";
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -67,9 +65,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 	}
 
 	public Pasajero findById(int id) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		String query = "select ID_PASAJERO, NOMBRE, EDAD, PESO, ID_COCHE from pasajero where ID_PASAJERO=?";
 		Pasajero pa= null;
 		try {
@@ -131,14 +127,14 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		}finally {
 			cerrarConexion();
 		}
+		
+		
 	}
 	
 	
 
 	public void addPassenger(Pasajero pasajero) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		String query = "insert into pasajero (NOMBRE, EDAD, PESO, ID_COCHE) values (?,?,?,?)";
 		
 		try {
@@ -155,13 +151,15 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 			System.out.println("Error al crear el pasajero" );
 		}finally {
 			cerrarConexion();
-		}		
+		}
+		
+		
+		
+		
 	}
 
 	public void setCar(int idPasaj, int idCoche) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		String query = "update pasajero set ID_COCHE=? where ID_PASAJERO=?";
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -185,9 +183,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 	
 	
 	public void deleteCarPassenger(int id) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		String query = "update pasajero set ID_COCHE=0 where ID_PASAJERO=?";
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
@@ -204,9 +200,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 
 	
 	public void passengerCarList(int id) {
-		if(!abrirConexion()) {
-			System.out.println("Error al conectar cn la bd");	
-		}
+		abrirConexion();
 		
 		String query = "SELECT ID_PASAJERO, NOMBRE, EDAD, PESO, ID_COCHE FROM pasajero WHERE ID_COCHE=?";
 		
@@ -234,6 +228,7 @@ public class SqlDaoPasajeroImpl implements IntPasajeroDao{
 		finally {
 			cerrarConexion();
 		}
+		
 	}
 	
 }
