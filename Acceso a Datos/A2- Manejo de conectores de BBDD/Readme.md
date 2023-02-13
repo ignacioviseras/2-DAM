@@ -41,11 +41,10 @@ Para la estructura del proyecto utilizaremos un modelo de patrón DAO con una ca
 
 # 🗃️es.edix.modelo.entidad
 
-Las clases Coche y Pasajeros contienen constructores vacíos, completo, Getters and Setters y equals y hashcode.
 
-# 📔Coche.java
+## 📔Coche.java
 
-En el Beans se encontrará la clase con sus atributos, getter and setters y el toString.
+En esta clase se encontrará la clase con sus atributos, getter and setters y el toString.
 
 ```java
 public class Coche {
@@ -71,9 +70,9 @@ public class Coche {
 }
 ```
 
-# 📔Pasajero.java
+## 📔Pasajero.java
 
-En el Beans se encontrará la clase con sus atributos, getter and setters y el toString.
+En esta clase se encontrará la clase con sus atributos, getter and setters y el toString.
 
 ```java
 public class Pasajero {
@@ -103,7 +102,7 @@ public class Pasajero {
 
 Aquí se localizan los archivos que obligan al dao a utilizar unos métodos en concreto como mínimo.
 
-# 📔IntCocheDao.java
+## 📔IntCocheDao.java
 
 ```java
 public interface IntCocheDao {
@@ -118,7 +117,7 @@ public interface IntCocheDao {
 }
 ```
 
-# 📔IntPasajeroDao.java
+## 📔IntPasajeroDao.java
 
 ```java
 public interface IntPasajeroDao {
