@@ -44,7 +44,7 @@ Para la estructura del proyecto utilizaremos un modelo de patrón DAO con una ca
 
 ## 📔Coche.java
 
-En esta clase se encontrará la clase con sus atributos, getter and setters y el toString.
+En esta clase se encontrará los atributos, getter and setters ,equals/hashCode y el toString.
 
 ```java
 public class Coche {
@@ -72,7 +72,7 @@ public class Coche {
 
 ## 📔Pasajero.java
 
-En esta clase se encontrará la clase con sus atributos, getter and setters y el toString.
+En esta clase se encontrará los atributos, getter and setters ,equals/hashCode y el toString.
 
 ```java
 public class Pasajero {
