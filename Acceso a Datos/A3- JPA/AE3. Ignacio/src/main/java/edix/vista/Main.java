@@ -3,6 +3,8 @@ package edix.vista;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,19 +20,48 @@ public class Main {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private static EntityTransaction et;
+	public static final Scanner scanner = new Scanner(System.in);
+	
+	public static String nextLine() {
+		return scanner.nextLine();
+		
+	}
 	
 	public static void main(String[] args) {
 		abrirConexion();
 		
-		
+		Boolean continua = true;
 		añadirDatos();
-		listaLibros();
-		listaAutores();
-		listaLibrerias();
-		listaLibrosEnLibreria();
+		System.out.println("======== Menu ========");
+		while(continua == true) {
+			System.out.println("1. Lista libros con editorial y autor\n"+
+								"2. Lista de autores con sus libros\n"+
+								"3. Lista de librerias con sus libros\n"+
+								"4. Lista de libros y la libreria a la que pertenecen\n"+
+								"5. Salir\n");
+			String opcion = nextLine();
+			if(opcion.equals("1")) {
+				
+				listaLibros();
+			}else if(opcion.equals("2")) {
+				
+				listaAutores();
+			}else if(opcion.equals("3")) {
+				
+				listaLibrerias();
+			}else if(opcion.equals("4")) {
+				
+				listaLibrosEnLibreria();
+			}else if(opcion.equals("5")) {
+				System.out.println("Saliendo del programa");
+				cerrarConexion();
+				continua = false;
+			}
+			
+		}
 		
 		
-		cerrarConexion();
+		
 	}
 	
 	
@@ -63,21 +94,21 @@ public class Main {
 		Editorial ed1 = new Editorial("SM", "calle el cuco");
 		Editorial ed2 = new Editorial("Anaya ", "calle caiman");
 		
-		Libreria libreria1 = new Libreria("todoLibros", "juan", "calle perdida 27");
-		Libreria libreria2 = new Libreria("libreate", "paco", "calle pesadilla, 112");
+		Libreria libreria1 = new Libreria("Casa del Libro", "Nicolás María Urgoiti", "C/ Gran Vía, 29, 28013");
+		Libreria libreria2 = new Libreria("La Central", "Antonio Ramírez", "Rda. de Atocha, 2, 28012");
 		
-		Autor aut1 = new Autor("Junji ", "ito", new Date(10,18,23));
-		Autor aut2 = new Autor("mario", "garcia ", new Date(99,1,9));
-		Autor aut3 = new Autor("mario ", "sanche", new Date(90,3,30));
+		Autor aut1 = new Autor("Junji", "ito", new Date(31,7,63));//1 4 7
+		Autor aut2 = new Autor("Michel", "Houellebecq", new Date(26,2,56));//2 5 8
+		Autor aut3 = new Autor("Stephen", "King", new Date(21,9,47));//3 6
 		
-		Libro libro1 = new Libro("los amantes odiados", 20.21);
-		Libro libro2 = new Libro("la celestina", 32.00);
-		Libro libro3 = new Libro("destino final", 15.24);
-		Libro libro4 = new Libro("donnie danko", 12.50);
-		Libro libro5 = new Libro("El libro de los amores ridículos", 7.50);
-		Libro libro6 = new Libro("el hombre en busqueda de sentido", 11.20);
-		Libro libro7 = new Libro("el señor de los anillos", 5.50);
-		Libro libro8 = new Libro("heroes", 9.99);
+		Libro libro1 = new Libro("Uzumaki", 23.75);
+		Libro libro2 = new Libro("Serotonina", 9.49);
+		Libro libro3 = new Libro("El resplandor", 6.64);
+		Libro libro4 = new Libro("Tomie", 23.75);
+		Libro libro5 = new Libro("Sumisión", 12.34);
+		Libro libro6 = new Libro("Cuento de hadas", 14.34);
+		Libro libro7 = new Libro("Gyo", 21.75);
+		Libro libro8 = new Libro("Aniquilación", 9.49);
 
 		//añadiendo los datos de los libros
 		
@@ -118,14 +149,14 @@ public class Main {
 		ed1.addLibro(libro6);
 		
 		//		libro7
-		libro7.setAutor(aut3);
-		aut3.addLibro(libro7);
+		libro7.setAutor(aut1);
+		aut1.addLibro(libro7);
 		libro7.setEditorial(ed1);
 		ed1.addLibro(libro7);
 		
 		//		libro8
-		libro8.setAutor(aut3);
-		aut3.addLibro(libro8);
+		libro8.setAutor(aut2);
+		aut2.addLibro(libro8);
 		libro8.setEditorial(ed1);
 		ed1.addLibro(libro8);
 		
@@ -193,7 +224,7 @@ public class Main {
 			System.out.println("\n-------------Lista de Libros-------------");
 			for(Libro libro : lstLibro) {
 				System.out.println("Titulo " + libro.getTitulo() + 
-						" Autor " + libro.getAutor().getNombre() + 
+						"\n\tAutor " + libro.getAutor().getNombre() + 
 						" Editorial " + libro.getEditorial().getNombre());
 			}
 			System.out.println();
@@ -212,7 +243,7 @@ public class Main {
 			for(Autor autor : lstAutor) {
 				System.out.println("Nombre " + autor.getNombre());
 				for(Libro libro: autor.getListalibrosAutor()) {
-					System.out.println("Libro " + libro.getTitulo());
+					System.out.println("\tLibro " + libro.getTitulo());
 					
 				}
 				System.out.println();
@@ -234,7 +265,7 @@ public class Main {
 			for(Libreria libreria: lstLibreria) {
 				System.out.println("Nombre " + libreria.getNombre());
 				for(Libro libro: libreria.getLibros()) {
-					System.out.println("Libro " + libro.getTitulo());
+					System.out.println("\tLibro " + libro.getTitulo());
 					
 				}
 				System.out.println();
@@ -256,7 +287,7 @@ public class Main {
 			for(Libro libro: lstLibro) {
 				System.out.println("Nombre " + libro.getTitulo());
 				for(Libreria libreria: libro.getLibrerias()) {
-					System.out.println("Libreria " + libreria.getNombre());
+					System.out.println("\tLibreria " + libreria.getNombre());
 					
 				}
 				System.out.println();
