@@ -1,5 +1,0 @@
-package es.edix.modelo.dao;
-
-public interface IntCocheDao {
-
-}
