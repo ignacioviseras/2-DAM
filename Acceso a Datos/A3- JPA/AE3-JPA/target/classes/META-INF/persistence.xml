@@ -7,6 +7,12 @@
 		<class>edix.modelo.entidad.Libreria</class>
 		<class>edix.modelo.entidad.Libro</class>
 		
+		
+		<class>requerimiento2.Academia</class>
+		<class>requerimiento2.Alumno</class>
+		<class>requerimiento2.Aula</class>
+		<class>requerimiento2.Profesor</class>
+		
 	
 		<properties>
 		
@@ -24,7 +30,7 @@
 			tablas desde cero.
 			update -> para solamente refrescar las tablas en caso de cambios de anotaciones
 			 -->
-			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 						 
 			<!-- Mostrar trazas de sql y establecer dialecto con hibernate -->
 			<property name = "hibernate.show_sql" value = "true" />

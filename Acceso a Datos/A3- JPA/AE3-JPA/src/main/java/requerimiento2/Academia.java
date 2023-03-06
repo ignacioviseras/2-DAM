@@ -1,4 +1,4 @@
-package edix.modelo.Entities;
+package requerimiento2;
 
 import java.util.List;
 

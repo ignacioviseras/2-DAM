@@ -1,4 +1,4 @@
-package edix.modelo.Entities;
+package requerimiento2;
 
 
 
@@ -22,12 +22,12 @@ public class Profesor {
 	private String nombre;
 	private String apellido;
 	
-	@OneToMany (mappedBy = "aula", cascade = CascadeType.PERSIST)
-	private Aula aula;
+	@OneToMany (cascade = CascadeType.PERSIST)
+	private List<Aula> aula;
 	
 	
 	
-	@ManyToMany (mappedBy = "listaProfesores", cascade = CascadeType.PERSIST)
+	@ManyToMany (cascade = CascadeType.PERSIST)
 	private List<Academia> listaAcademias;
 	
 

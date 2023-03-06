@@ -838,16 +838,15 @@ Para este requerimiento hemos llegado a la conclusión que una Academia es buen 
 
 ```java
 @Entity
-@Table(name = "academia")
+@Table(name = "colegios")
 public class Academia {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id_academia;
-  private String nombre_academia, direccion;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_academia;
+	private String nombre_academia, direccion;
 	
-  @ManyToMany (mappedBy = "listaAcademias", cascade = CascadeType.PERSIST)
-  private List<Profesor> listaProfesores;
+	@ManyToMany (mappedBy = "listaAcademias", cascade = CascadeType.PERSIST)
+	private List<Profesor> listaProfesores;
 
 }
 ```
@@ -860,14 +859,13 @@ public class Academia {
 @Entity
 @Table(name="alumnos")
 public class Alumno {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id_alumno;
-  private String nombre, apellido;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_alumno;
+	private String nombre, apellido;
 	
-  @OneToOne (mappedBy = "alumno", cascade = CascadeType.PERSIST)
-  private Aula letra; 
+	@OneToOne (mappedBy = "alumno", cascade = CascadeType.PERSIST)
+	private Aula aula;
 }
 ```
 
@@ -879,18 +877,17 @@ public class Alumno {
 @Entity
 @Table(name="aulas")
 public class Aula {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id_aula;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_aula;
 	
-  @OneToOne
-  @JoinColumn(name = "fk_letra_clase", referencedColumnName = "letra")
-  private String letra;
+	@OneToOne
+	@JoinColumn(name = "fk_letra_clase", referencedColumnName = "letra")
+	private Alumno alumno;
 	
-  @ManyToOne
-  @JoinColumn (name = "Fk_id_profesor", referencedColumnName = "id_profesor")
-  private Profesor profesor;
+	@ManyToOne
+	@JoinColumn (name = "Fk_id_profesor", referencedColumnName = "id_profesor")
+	private Profesor profesor;
 	
 }
 ```
@@ -903,18 +900,19 @@ public class Aula {
 @Entity
 @Table(name="profesores")
 public class Profesor {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id_profesor;
-  private String nombre;
-  private String apellido;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_profesor;
+	private String nombre;
+	private String apellido;
 	
-  @OneToMany (mappedBy = "aula", cascade = CascadeType.PERSIST)
-  private Aula aula;
+	@OneToMany (cascade = CascadeType.PERSIST)
+	private List<Aula> aula;
 	
-  @ManyToMany (mappedBy = "listaProfesores", cascade = CascadeType.PERSIST)
-  private List<Academia> listaAcademias;
+	
+	
+	@ManyToMany (cascade = CascadeType.PERSIST)
+	private List<Academia> listaAcademias;
 	
 }
 ```

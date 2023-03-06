@@ -1,4 +1,6 @@
-package edix.modelo.Entities;
+package requerimiento2;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +19,8 @@ public class Aula {
 	private Integer id_aula;
 	
 	@OneToOne
-	@JoinColumn(name = "fk_letra_clase", referencedColumnName = "letra")
-	private String letra;
+	@JoinColumn(name = "fk_letra_clase", referencedColumnName = "id_alumno")
+	private Alumno alumno;
 	
 	@ManyToOne
 	@JoinColumn (name = "Fk_id_profesor", referencedColumnName = "id_profesor")
