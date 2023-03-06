@@ -10,7 +10,9 @@ Es una herramienta que permite a los desarrolladores de software trabajar con ba
 
 Con JPA, los desarrolladores pueden mapear objetos Java a tablas de bases de datos y realizar operaciones de lectura y escritura en ellas utilizando un conjunto de clases y métodos definidos por la API.
 
+
 ---
+
 
 # Creación del proyecto
 
@@ -742,7 +744,7 @@ public static void Contexto() {
   }catch (JAXBException e) {
     System.out.println("Error creando el contexto");
     System.out.println(e.getMessage());
-	  e.printStackTrace();
+    e.printStackTrace();
     return;
   }
 }
@@ -819,7 +821,6 @@ Este seria uno de los muchos registro que muestra en formato XML
 <p align="center">
   <img src="fotosReadme/Untitled%2010.png">
 </p>
-![Untitled](fotosReadme/Untitled%2010.png)
 
 # Creación de un nuevo esquema de bd
 
