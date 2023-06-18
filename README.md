@@ -34,5 +34,5 @@
 
 ---
 
-6. **Devops**
+6. **Devops**<br>
     Final → 7/10
